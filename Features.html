@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Features - SeedGen 3</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #161b22;
+            border-bottom: 1px solid #30363d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.6rem 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .nav-logo {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #8b949e;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: #2ea043;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        .content-box {
+            background-color: #161b22;
+            padding: 2rem 2.5rem;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+        h1 {
+            color: #2ea043;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 0.5rem;
+        }
+        h2 {
+            color: #2ea043;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            color: #c9d1d9;
+            font-size: 1.05rem;
+        }
+        .image-block {
+            text-align: center;
+            margin: 0 0 1.5rem 0;
+        }
+        .image-block img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+        ul {
+            list-style: disc;
+            color: #c9d1d9;
+            padding-left: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        ul ul {
+            list-style: disc;
+            margin-top: 0.3rem;
+            margin-bottom: 0.3rem;
+            padding-left: 1.8rem;
+        }
+        ul ul li {
+            font-size: 1.05rem;
+        }
+        .final-sentence {
+            margin-top: 2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #30363d;
+            font-style: italic;
+            color: #8b949e;
+        }
+        footer {
+            background-color: #0d1117;
+            text-align: center;
+            padding: 1.5rem;
+            color: #8b949e;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="brand">
+                <img src="./Imgstorage/SeedGenLogo03a.png" alt="SeedGen 3" class="nav-logo" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="Why.html">Why?</a></li>
+                <li><a href="Entropy.html">Entropy</a></li>
+                <li><a href="Passphrase.html">Passphrase</a></li>
+                <li><a href="Steganography.html">Steganography</a></li>
+                <li><a href="Features.html" class="active">Features</a></li>
+                <li><a href="Docs_Reviews.html">Docs/Reviews</a></li>
+                <li><a href="FreeDownload.html">Free Download</a></li>
+                <li><a href="Testwallet.html">Test your new Wallet</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="content-box">
+            <h1>Features</h1>
+
+            <!-- Opening image -->
+            <div class="image-block">
+                <img src="./Imgstorage/SeedGenScreen.jpg" alt="SeedGen 3 Interface" />
+            </div>
+
+            <p>SeedGen3 gives the user maximum freedom of choice: it's an aid to help you avoid mistakes and use seed phrases in a more flexible and secure way.</p>
+
+            <!-- SECTION 1 -->
+            <h2>What you can do with SeedGen3:</h2>
+            <ul>
+                <li><strong>100% offline, zero servers:</strong> runs entirely in the browser, in a single HTML file. No data ever leaves your device.</li>
+                <li>
+                    <strong>Maximum input flexibility:</strong>
+                    <ul>
+                        <li>Words, including for existing wallets, with verification against the <strong>BIP39</strong> dictionary and checksum.</li>
+                        <li>Numbers, converted to words and back.</li>
+                        <li>Bits from dice rolls or another external source, in turn converted into words and numbers.</li>
+                    </ul>
+                </li>
+                <li>Save seed and keys (private and public) as <strong>QR code</strong>, alphanumeric text, or numbers.</li>
+                <li><strong>Decoy label:</strong> steganographic camouflage of the seed inside an innocuous-looking image.</li>
+                <li>Generation of private keys and public addresses, with export (alphanumeric and <strong>QR code</strong>) for: Bitcoin (Native SegWit, Legacy, Nested SegWit, <strong>Taproot</strong>), Ethereum/<strong>EVM</strong>, and TRON.</li>
+            </ul>
+
+            <!-- SECTION 2 (ENTROPY) -->
+            <h2>Entropy:</h2>
+
+            <p><strong>Random number generator:</strong> simple, intuitive, practical. Uses the browser's <strong>CSPRNG</strong>, fully controlled by the user.</p>
+
+            <p><strong>Microphone entropy:</strong> a substantial piece of engineering, built for <strong>BYOE</strong> — the user genuinely brings the entropy of their own environment, not a number computed on paper.</p>
+
+            <ul>
+                <li>Sample collection is filtered based on measured entropy, not raw audio.</li>
+                <li>Over 2,800,000 bits collected to yield 256 usable ones — a ratio of nearly 11,000 to 1, to maximize entropy density.</li>
+                <li>XOR'd with the browser's <strong>CSPRNG</strong> as an additional layer of defense.</li>
+                <li>Verified entropy quality: real-time health tests compliant with <strong>NIST SP 800-90B</strong> (RCT/APT), plus statistical validation of the output with <strong>NIST SP 800-22</strong>.</li>
+            </ul>
+
+            <p>We tell you how it's built and what results it produced: the choice is entirely yours. One thing is certain — it's <strong>YOUR</strong> entropy.</p>
+
+            <!-- SECTION 3 (SECURITY) -->
+            <h2>Security:</h2>
+            <ul>
+                <li><strong>A single file, usable offline:</strong> even the QR libraries and the <strong>BIP39</strong> dictionary are embedded in the script.</li>
+                <li><strong>Fully readable, open source, and auditable</strong> by anyone — developers and non-developers alike, with the help of an AI.</li>
+                <li>Tests against official vectors and edge cases for key generation, run on every restart: anyone reading the code can be certain they've been verified.</li>
+                <li>Memory wiped on every choice change, manually clearable by the user, with clipboard and sensitive data kept under control.</li>
+            </ul>
+
+            <p class="final-sentence">We set out to build a tool, and ended up building a small tank.</p>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>No cookies. No tracking. No data collected.</p>
+        <p>&copy; SeedGen 3 Project. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

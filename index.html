@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeedGen 3</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.4;
+        }
+        header {
+            background-color: #161b22;
+            border-bottom: 1px solid #30363d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.6rem 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .nav-logo {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #8b949e;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: #2ea043;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 1.5rem;
+        }
+        .hero {
+            text-align: center;
+            padding: 1.2rem 1.4rem;
+            background-color: #161b22;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            margin-bottom: 1.8rem;
+        }
+        .hero-logo {
+            max-height: 97px;
+            width: auto;
+            margin-bottom: 0.8rem;
+            object-fit: contain;
+            display: inline-block;
+        }
+        .hero p {
+            font-size: 1.05rem;
+            color: #c9d1d9;
+            max-width: 850px;
+            margin: 0 auto 0.8rem auto;
+            line-height: 1.45;
+        }
+        .hero-link {
+            display: inline-block;
+            color: #2ea043;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        .hero-link:hover {
+            text-decoration: underline;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+        }
+        .card {
+            background-color: #161b22;
+            padding: 1.25rem;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+        .card h2 {
+            font-size: 1.3rem;
+            color: #2ea043;
+            margin-bottom: 0.6rem;
+        }
+        .card p {
+            color: #8b949e;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .card-image-link {
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+            display: block;
+            transition: opacity 0.2s ease;
+        }
+        .card img:hover {
+            opacity: 0.8;
+        }
+        .card-link {
+            display: inline-block;
+            color: #2ea043;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+        .card-link:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #0d1117;
+            text-align: center;
+            padding: 1.5rem;
+            color: #8b949e;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="brand">
+                <img src="./Imgstorage/SeedGenLogo03a.png" alt="SeedGen 3" class="nav-logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="Why.html">Why?</a></li>
+                <li><a href="Entropy.html">Entropy</a></li>
+                <li><a href="Passphrase.html">Passphrase</a></li>
+                <li><a href="Steganography.html">Steganography</a></li>
+                <li><a href="Features.html">Features</a></li>
+                <li><a href="Docs_Reviews.html">Docs/Reviews</a></li>
+                <li><a href="FreeDownload.html">Free Download</a></li>
+                <li><a href="Testwallet.html">Test your new Wallet</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <img src="./Imgstorage/SeedGenLogo03a.png" alt="SeedGen 3" class="hero-logo">
+            <p>A practical tool for wallet creation In the philosophy "Trust None" and "Bring Your Own Entropy"<br>
+            You don't know how to generate Entropy?<br>
+            A Physical Entropy Generator tool is included for secure seed phrase creation.</p>
+            <a href="Why.html" class="hero-link">Learn More &raquo;</a>
+        </section>
+
+        <section class="grid">
+            <article class="card">
+                <div>
+                    <h2>Offline Security</h2>
+                    <p>Designed for fully offline environments, ensuring private keys never touch connected networks.</p>
+                    <a href="Why.html" class="card-image-link">
+                        <img src="./Imgstorage/NoNetwork.jpg" alt="Offline Security">
+                    </a>
+                </div>
+                <a href="Why.html" class="card-link">Learn More &raquo;</a>
+            </article>
+
+            <article class="card">
+                <div>
+                    <h2>Entropy Sampling</h2>
+                    <p>Captures ambient noise to collect real-world entropy.</p>
+                    <a href="Entropy.html" class="card-image-link">
+                        <img src="./Imgstorage/SoundCheckHome.png" alt="Entropy Sampling">
+                    </a>
+                </div>
+                <a href="Entropy.html" class="card-link">Learn More &raquo;</a>
+            </article>
+
+            <article class="card">
+                <div>
+                    <h2>Passphrase Power</h2>
+                    <p>Scale your wallet security.<br>Keep your 24 words in plain sight while remaining protected.</p>
+                    <a href="Passphrase.html" class="card-image-link">
+                        <img src="./Imgstorage/PassphrasePower.png" alt="Passphrase Security">
+                    </a>
+                </div>
+                <a href="Passphrase.html" class="card-link">Learn More &raquo;</a>
+            </article>
+
+            <article class="card">
+                <div>
+                    <h2>Steganographic Output</h2>
+                    <p>Hidden in plain sight.<br>Security isn't just code.<br>It is strategy.</p>
+                    <a href="Steganography.html" class="card-image-link">
+                        <img src="./Imgstorage/WalletPaper.png" alt="Steganographic Output">
+                    </a>
+                </div>
+                <a href="Steganography.html" class="card-link">Learn More &raquo;</a>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>No cookies. No tracking. No data collected.</p>
+        <p>&copy; SeedGen 3 Project. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entropy - SeedGen 3</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #161b22;
+            border-bottom: 1px solid #30363d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.6rem 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .nav-logo {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #8b949e;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        .nav-links a.active, .nav-links a:hover {
+            color: #2ea043;
+        }
+        .container {
+            max-width: 1020px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        .content-box {
+            background-color: #161b22;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+        h1 {
+            color: #2ea043;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 0.5rem;
+        }
+        h2 {
+            color: #2ea043;
+            font-size: 1.4rem;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            color: #c9d1d9;
+            font-size: 1.05rem;
+        }
+        .image-block {
+            text-align: center;
+            margin: 1.5rem 0 2rem 0;
+        }
+        .image-block img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+        .highlight {
+            color: #2ea043;
+            font-weight: bold;
+        }
+        a.inline-link {
+            color: #2ea043;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a.inline-link:hover {
+            text-decoration: underline;
+        }
+        table.ent-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        table.ent-table th, table.ent-table td {
+            border: 1px solid #30363d;
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+        }
+        table.ent-table th {
+            background-color: #21262d;
+            color: #2ea043;
+        }
+        table.ent-table td {
+            color: #c9d1d9;
+        }
+        footer {
+            background-color: #0d1117;
+            text-align: center;
+            padding: 1.5rem;
+            color: #8b949e;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="brand">
+                <img src="./Imgstorage/SeedGenLogo03a.png" alt="SeedGen 3" class="nav-logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="Why.html">Why?</a></li>
+                <li><a href="Entropy.html" class="active">Entropy</a></li>
+                <li><a href="Passphrase.html">Passphrase</a></li>
+                <li><a href="Steganography.html">Steganography</a></li>
+                <li><a href="Features.html">Features</a></li>
+                <li><a href="Docs_Reviews.html">Docs/Reviews</a></li>
+                <li><a href="FreeDownload.html">Free Download</a></li>
+                <li><a href="Testwallet.html">Test your new Wallet</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="content-box">
+            <h1>Physical Entropy: Real World Randomness</h1>
+            
+            <p>We stated it in "Why?", but it deserves repeating: striving for true self-custody while delegating key generation to black-box hardware—which is continuously targeted by hackers—is a fundamental flaw.</p>
+            
+            <p>Where does true, unmanipulated randomness live? <strong>In the physical world.</strong></p>
+
+            <p>Why entrust key generation to a proprietary chip or unverifiable code that attackers actively try to exploit? Generating your own entropy is the cornerstone of control and security. Fortunately, physical entropy can be harvested in multiple ways.</p>
+
+            <h2>1. Manual Bit Input (Dice Rolls)</h2>
+            <p>Roll physical dice (even = 0, odd = 1) or flip coins to construct 256 bits of pure, physical randomness. Input your custom binary stream directly into the interface.</p>
+
+            <div class="image-block">
+                <img src="./Imgstorage/BitInsert.jpg" alt="Manual Bit Input">
+            </div>
+
+            <h2>2. Manual BIP-39 Selection & Quick Random Picker</h2>
+            <p>Prefer picking your own sequence? Select words directly from the 2048-word BIP-39 dictionary, input custom numbers, or use the built-in <strong>Start / Stop</strong> random index generator to quickly grab positions (like index 973 for "kangaroo") and fill your grid effortlessly.</p>
+
+            <div class="image-block">
+                <img src="./Imgstorage/SeedGenGrid.jpg" alt="SeedGen Word Grid with Start/Stop Generator">
+            </div>
+
+            <h2>3. Acoustic Ambient Harvester</h2>
+            <p>You can capture real-world environmental acoustic noise. We spent countless hours testing and refining this process to extract true randomness from physical sound waves.</p>
+
+            <p>It's not just raw sound: we collect hundreds of audio samples to gather over <strong>2.8 million bits</strong>, rigorously checking the entropy quality of every single sample. These millions of bits are then cryptographically hashed down to the 256 bits required for your wallet—a massive <strong>11,000 to 1 compression ratio</strong> that ensures peak entropy density.</p>
+
+            <div class="image-block">
+                <img src="./Imgstorage/SoundCheckMany.png" alt="Acoustic Sampling">
+            </div>
+
+            <div class="image-block">
+                <img src="./Imgstorage/EntropyGenerator.jpg" alt="NIST Test Results">
+            </div>
+
+            <h2>4. NIST SP 800-22 Standard Verification</h2>
+            <p>We compared our physical entropy sample against one generated by a standard CSPRNG — the same class of random number generator used by browsers and most software — both run through the NIST SP 800-22 statistical test suite. The result: for the data we have, both samples are comparable in entropy quality, with no meaningful difference in either direction.</p>
+
+            <p>Worth keeping in mind: a CSPRNG is specifically engineered to pass this kind of test. Matching it is the expected, healthy target for a properly conditioned entropy source — and we hit it.</p>
+
+            <p>We can't publish the raw samples used in this test. And without them, the official NIST report isn't just technical — it's genuinely unreadable, even by the standards of a technical report.</p>
+
+            <p>For that reason, we also ran the ENT test suite, which produces a far more readable output. The table below is the most transparent thing we can offer without handing out the actual entropy samples.</p>
+
+            <table class="ent-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Our Sample (Mic + SHA-256 + CSPRNG XOR)</th>
+                        <th>CSPRNG Control</th>
+                        <th>Ideal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Entropy</td>
+                        <td>7.998411 bits/byte</td>
+                        <td>7.998642 bits/byte</td>
+                        <td>8.0</td>
+                    </tr>
+                    <tr>
+                        <td>Chi-square percentile</td>
+                        <td>42.35%</td>
+                        <td>71.13%</td>
+                        <td>50%, neither near 0% nor 100%</td>
+                    </tr>
+                    <tr>
+                        <td>Arithmetic mean</td>
+                        <td>127.4520</td>
+                        <td>127.4660</td>
+                        <td>127.5</td>
+                    </tr>
+                    <tr>
+                        <td>Monte Carlo Pi</td>
+                        <td>3.140112 (0.05% error)</td>
+                        <td>3.152487 (0.35% error)</td>
+                        <td>3.14159265</td>
+                    </tr>
+                    <tr>
+                        <td>Serial correlation</td>
+                        <td>-0.003230</td>
+                        <td>0.001234</td>
+                        <td>0.0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>No cookies. No tracking. No data collected.</p>
+        <p>&copy; SeedGen 3 Project. All rights reserved.</p>
+    </footer>
+</body>
+</html>

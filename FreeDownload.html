@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Download - SeedGen 3</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #161b22;
+            border-bottom: 1px solid #30363d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.6rem 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .nav-logo {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #8b949e;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: #2ea043;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        .content-box {
+            background-color: #161b22;
+            padding: 2rem 2.5rem;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            text-align: center;
+        }
+        h1 {
+            color: #2ea043;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 0.5rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            color: #c9d1d9;
+            font-size: 1.05rem;
+        }
+        .offline-warning {
+            color: #ff3b30;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        .download-button {
+            display: inline-block;
+            background-color: #2ea043;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0.8rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            margin: 0.5rem 0;
+        }
+        .download-button:hover {
+            background-color: #3fb950;
+            transform: scale(1.02);
+        }
+        .download-button:active {
+            transform: scale(0.98);
+        }
+        .fallback-hint {
+            color: #c9d1d9;
+            font-size: 1.05rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .inline-link {
+            color: #2ea043;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .inline-link:hover {
+            text-decoration: underline;
+        }
+        .donation-msg {
+            color: #c9d1d9;
+            font-size: 1.05rem;
+            margin-top: 1.5rem;
+        }
+        footer {
+            background-color: #0d1117;
+            text-align: center;
+            padding: 1.5rem;
+            color: #8b949e;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="brand">
+                <img src="./Imgstorage/SeedGenLogo03a.png" alt="SeedGen 3" class="nav-logo" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="Why.html">Why?</a></li>
+                <li><a href="Entropy.html">Entropy</a></li>
+                <li><a href="Passphrase.html">Passphrase</a></li>
+                <li><a href="Steganography.html">Steganography</a></li>
+                <li><a href="Features.html">Features</a></li>
+                <li><a href="Docs_Reviews.html">Docs/Reviews</a></li>
+                <li><a href="FreeDownload.html" class="active">Free Download</a></li>
+                <li><a href="Testwallet.html">Test your new Wallet</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="content-box">
+
+            <h1>Free Download</h1>
+
+            <p>
+                <strong>Completely free. No registration, no email.</strong>
+            </p>
+
+            <!-- Red OFFLINE warning -->
+            <p class="offline-warning">USE OFFLINE ONLY!</p>
+
+            <!-- Download button -->
+            <p>
+                <a href="./Script/SeedGen_3.html" class="download-button" download type="application/octet-stream">
+                    ⬇ Download SeedGen_3.html
+                </a>
+            </p>
+
+            <!-- Download hint (right below the button) -->
+            <p class="fallback-hint">
+                If the download doesn't start automatically, right-click the button and choose "Save link as..."
+            </p>
+
+            <!-- Donation messages -->
+            <!-- MERGED LINE: no <br>, all in the same paragraph -->
+            <p class="donation-msg" style="font-style: italic;">
+                If you find it useful, consider sharing it with others who value true self-custody. That's the only payment we ask.
+            </p>
+
+            <!-- CORRECTED LINK TEXT: "Test your new Wallet" -->
+            <p class="donation-msg">
+                If you'd like to support the project further, a donation to
+                <a href="Testwallet.html" class="inline-link">Test your new Wallet</a>
+                is always welcome — and a great way to test it too. 😉
+            </p>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>No cookies. No tracking. No data collected.</p>
+        <p>&copy; SeedGen 3 Project. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

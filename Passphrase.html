@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passphrase - SeedGen 3</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #161b22;
+            border-bottom: 1px solid #30363d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.6rem 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .nav-logo {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #8b949e;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        .nav-links a.active, .nav-links a:hover {
+            color: #2ea043;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        .content-box {
+            background-color: #161b22;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+        h1 {
+            color: #2ea043;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 0.5rem;
+        }
+        h1.centered-title {
+            text-align: center;
+        }
+        h2 {
+            color: #2ea043;
+            font-size: 1.4rem;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            color: #c9d1d9;
+            font-size: 1.05rem;
+        }
+        .image-block {
+            text-align: center;
+            margin: 1.5rem 0 2rem 0;
+        }
+        .image-block img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+        .highlight {
+            color: #2ea043;
+            font-weight: bold;
+        }
+        a.inline-link {
+            color: #2ea043;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a.inline-link:hover {
+            text-decoration: underline;
+        }
+        .quote-box {
+            background-color: #0d1117;
+            border-left: 4px solid #2ea043;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.2rem;
+            font-style: italic;
+            color: #8b949e;
+        }
+        .headline-callout {
+            color: #2ea043;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 1.5rem 0;
+            letter-spacing: 0.05em;
+        }
+        .math-block {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: center;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            color: #2ea043;
+            font-size: 1.1rem;
+            margin: 1rem 0 1.5rem 0;
+        }
+        ul.list-custom {
+            list-style-type: none;
+            margin-bottom: 1.5rem;
+            padding-left: 0;
+        }
+        ul.list-custom li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #c9d1d9;
+            font-size: 1.05rem;
+        }
+        ul.list-custom li::before {
+            content: "•";
+            color: #2ea043;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        .callout-action {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #2ea043;
+            letter-spacing: 0.15em;
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 1px dashed #2ea043;
+            border-radius: 8px;
+            background-color: rgba(46, 160, 67, 0.05);
+        }
+        footer {
+            background-color: #0d1117;
+            text-align: center;
+            padding: 1.5rem;
+            color: #8b949e;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="brand">
+                <img src="./Imgstorage/SeedGenLogo03a.png" alt="SeedGen 3" class="nav-logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="Why.html">Why?</a></li>
+                <li><a href="Entropy.html">Entropy</a></li>
+                <li><a href="Passphrase.html" class="active">Passphrase</a></li>
+                <li><a href="Steganography.html">Steganography</a></li>
+                <li><a href="Features.html">Features</a></li>
+                <li><a href="Docs_Reviews.html">Docs/Reviews</a></li>
+                <li><a href="FreeDownload.html">Free Download</a></li>
+                <li><a href="Testwallet.html">Test your new Wallet</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="content-box">
+            <h1 class="centered-title">The Power of the Passphrase</h1>
+
+            <div class="image-block">
+                <img src="./Imgstorage/passphrase.jpg" alt="The Power of the Passphrase">
+            </div>
+
+            <p>Ask any crypto expert what a passphrase is:</p>
+
+            <div class="quote-box">
+                "You just add a salt to SHA-256 and you get a different output."
+            </div>
+
+            <p>NAAAAAAAAAAAAH!</p>
+
+            <div class="headline-callout">
+                PASSPHRASE IS PURE MAGIC!
+            </div>
+
+            <p>A passphrase is a password stored exclusively in your mind. It regenerates an entirely different wallet from the exact same recovery words.</p>
+
+            <p>What does this mean in practice? It means you can leave your 24-word seed phrase in plain sight on a metal plate, in a notebook, or anywhere else—and it still won't give access to your real wallet!</p>
+
+            <h2>Mathematical Strength</h2>
+            <p>How powerful is it mathematically? If you use 50 out of 95 readable ASCII characters, the search space yields:</p>
+
+            <div class="math-block">
+                95<sup>50</sup> &approx; 2<sup>328.5</sup> combinations
+            </div>
+
+            <p>Since a standard BIP-39 wallet key space is bounded by 2<sup>256</sup> combinations, a passphrase of this length provides entropy that exceeds the entire wallet space itself. With your seed words and a passphrase, you can theoretically map to any possible wallet derivation.</p>
+
+            <p>You can truly leave your words in plain sight. It is the fundamental first step into plausible deniability and steganography.</p>
+
+            <h2>The Honeypot Strategy</h2>
+            <p>You can deploy advanced defensive strategies like using multiple passphrases:</p>
+
+            <!-- LOGIC FIX APPLIED HERE -->
+            <ul class="list-custom">
+                <li><strong>No Passphrase (Default Wallet):</strong> Spare change. If your seed is stolen, this is all anyone sees.</li>
+                <li><strong>1st Passphrase:</strong> Secondary wallet holding a moderate balance. If forced to reveal your passphrase, this is all anyone sees.</li>
+                <li><strong>2nd Passphrase:</strong> Core wallet containing your main wealth.</li>
+            </ul>
+
+            <div class="callout-action">
+                USE IT &nbsp;•&nbsp; USE IT &nbsp;•&nbsp; USE IT
+            </div>
+
+            <h2>Not Every Wallet App Gets It (Shame). But we know a trick</h2>
+            <p>Not every wallet honors the passphrase. Import just the words into one that doesn't support it, and you land on a completely different — but perfectly valid — wallet. No error, no warning, just silence. That's not a bug anywhere: BIP-39 treats a missing passphrase as an empty one, by design.</p>
+
+            <p><strong>MetaMask</strong> is a widely used example: its <a class="inline-link" href="https://support.metamask.io/start/use-an-existing-wallet/" target="_blank" rel="noopener">Secret Recovery Phrase import</a> only asks for your 12/24-word phrase — no passphrase field, anywhere. Type just the words in there and you land on a different account than the one your passphrase protects.</p>
+
+            <p>What does work: MetaMask also lets you import a single account straight from an already-derived private key ("Import Account" → "Private Key"). Since the passphrase is already baked into that key, this lands on the correct address — you just get that one account, not the full HD wallet tree a passphrase-aware wallet like SafePal gives you from the words alone.</p>
+
+            <p>Make sure your wallet app actually supports the BIP-39 passphrase (sometimes called the "25th word") — and always verify the addresses match before moving real funds.</p>
+        </article>
+    </main>
+
+    <footer>
+        <p>No cookies. No tracking. No data collected.</p>
+        <p>&copy; SeedGen 3 Project. All rights reserved.</p>
+    </footer>
+</body>
+</html>

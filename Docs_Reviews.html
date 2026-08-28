@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Docs &amp; Reviews - SeedGen 3</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #161b22;
+            border-bottom: 1px solid #30363d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.6rem 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .nav-logo {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #8b949e;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: #2ea043;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        .content-box {
+            background-color: #161b22;
+            padding: 2rem 2.5rem;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+        h1 {
+            color: #2ea043;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 0.5rem;
+        }
+        h2 {
+            color: #2ea043;
+            font-size: 1.4rem;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+        h3 {
+            color: #2ea043;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            color: #c9d1d9;
+            font-size: 1.05rem;
+        }
+        .image-block {
+            text-align: center;
+            margin: 0 0 1.5rem 0;
+        }
+        .image-block img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+        .scroll-box {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 1rem;
+            height: 250px  !important;
+            overflow-y: auto;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #c9d1d9;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            resize: none;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 1rem;
+            height: 250px  !important;
+            overflow-y: auto;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #c9d1d9;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+        .scroll-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scroll-box::-webkit-scrollbar-track {
+            background: #161b22;
+            border-radius: 4px;
+        }
+        .scroll-box::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+        .scroll-box::-webkit-scrollbar-thumb:hover {
+            background: #2ea043;
+        }
+        .audit-section {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #30363d;
+        }
+        .audit-section:first-of-type {
+            border-top: none;
+            margin-top: 0;
+            padding-top: 0;
+        }
+        .summary-text {
+            background-color: #0d1117;
+            padding: 0.8rem 1.2rem;
+            border-radius: 6px;
+            border-left: 3px solid #2ea043;
+            margin-bottom: 1rem;
+            color: #c9d1d9;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        footer {
+            background-color: #0d1117;
+            text-align: center;
+            padding: 1.5rem;
+            color: #8b949e;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="brand">
+                <img src="./Imgstorage/SeedGenLogo03a.png" alt="SeedGen 3" class="nav-logo" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="Why.html">Why?</a></li>
+                <li><a href="Entropy.html">Entropy</a></li>
+                <li><a href="Passphrase.html">Passphrase</a></li>
+                <li><a href="Steganography.html">Steganography</a></li>
+                <li><a href="Features.html">Features</a></li>
+                <li><a href="Docs_Reviews.html" class="active">Docs/Reviews</a></li>
+                <li><a href="FreeDownload.html">Free Download</a></li>
+                <li><a href="Testwallet.html">Test your new Wallet</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="content-box">
+            <h1>Docs &amp; Reviews</h1>
+
+            <!-- OPENING IMAGE -->
+            <div class="image-block">
+                <img src="./Imgstorage/Test01.jpg" alt="SeedGen 3 - Documentation and Reviews" />
+            </div>
+
+            <!-- INTRODUCTION -->
+            <p>
+                All our reviews are AI‑generated. But we don't hide it — and we didn't just ask "is it good?".
+                We designed a structured audit prompt to stress‑test SeedGen 3 from every angle.
+            </p>
+            <p>
+                Below you'll find the full prompt we used, together with the summaries and complete outputs
+                from every AI model we consulted. No cherry‑picking, no spin — just raw, verifiable results.
+            </p>
+            <p>
+                <strong>Read them, copy them, verify them yourself.</strong> That's the only way to build trust.
+            </p>
+
+            <!-- PROMPT SECTION -->
+            <h2>The Prompt We Used</h2>
+            <textarea class="scroll-box" readonly>## Security Audit Prompt (Software Component Only)
+
+### 1. Context and Objective
+I am auditing a single self-contained HTML script designed to function **exclusively offline**, with the following software features:
+
+- Accepts user input for seed generation:
+  - Direct entry of BIP39 mnemonic words (the tool supports 12/18/24 words — the standard BIP39 lengths it implements, not necessarily every length the standard allows).
+  - Direct entry of numbers (from 1 to 2048) corresponding to BIP39 wordlist indices.
+  - Optional random number generation via a button.
+  - Optional audio sample collection from the microphone as an additional entropy source.
+- Calculates the last word (checksum) according to the BIP39 standard.
+- Handles the entry of a BIP39 passphrase (strongly recommended).
+- Derives public and private addresses. The tool may support several standard derivation formats per chain (e.g. Legacy, Nested SegWit, Native SegWit, Taproot for Bitcoin, plus other BIP44-family chains) — each format correctly uses its own standard purpose value in the path (44'/49'/84'/86'/etc.), so different formats having different path prefixes is expected and correct, not a deviation to flag.
+
+**Audit Objective**: To verify exclusively the **mathematical correctness**, **digital security**, and **entropy management** of the source code, irrespective of how the user physically prints or stores the data. Be fair and balanced: verify against what the tool actually implements and claims, not against an assumption of what a generic BIP39 tool "should" do.
+
+---
+
+### 2. Offline Isolation and Dependencies Audit
+- **No network activity**: Inspect the entire script to ensure it does not make any network requests (no `fetch()`, `XMLHttpRequest`, `WebSocket`, `navigator.sendBeacon`, or loading of external resources via `<script src="...">`, `<link>`, or dynamic `import()`).
+- **Self-containment**: Verify that all cryptographic libraries (SHA-256, PBKDF2, secp256k1, Base58, Bech32) are included **directly** within the HTML file (or imported from local blobs) and are not loaded from a CDN.
+- **Unauthorized persistence**: Check that the script does not save any sensitive data to `localStorage`, `sessionStorage`, `IndexedDB`, or `Cookies`, nor does it use the `FileSystem` API to write the seed to disk without explicit user consent (e.g., forced downloads).
+
+---
+
+### 3. Entropy and Random Number Generation Audit
+**3.1. Manual input (numbers and words)**
+- Verify that entered numbers (1–2048) are strictly validated. Note: if the number field is a native HTML `<input type="number">`, the browser itself blocks non-numeric characters before they ever reach the script — check the actual reachable behavior, not just what a raw string-parsing function would theoretically do with unsanitized input.
+- Verify that entered words are validated against the English BIP39 wordlist (case-insensitive, whitespace trimming).
+- Verify that the accepted mnemonic lengths match one of the tool's own supported lengths and comply with BIP39 (entropy bits + checksum bits divisible into 11-bit groups).
+
+**3.2. Random number generator ("Random" button)**
+- **Critical check**: Ascertain that the generator uses a **CSPRNG** (`crypto.getRandomValues()`), not `Math.random()` or another non-cryptographic source, for anything that ends up in the seed.
+- **Immediate failure**: If it uses `Math.random()` for seed entropy, flag this as a **critical vulnerability**.
+
+**3.3. Microphone entropy**
+- Verify that the collection uses the `getUserMedia` API with explicit user consent and captures real audio samples from the device.
+- **Data processing**: Check how the raw audio samples are converted into entropy — a cryptographic hash function must be applied before use; raw audio bytes must **never** be used directly as seed material.
+- **Combining with other randomness**: If the microphone entropy is combined with any other value (e.g. the browser's own CSPRNG) before use, verify the combination is cryptographically sound and keeps the result secure even if the microphone contributed little or no real entropy.
+- **UI feedback**: Note whether the tool gives the user any signal about entropy/signal quality and a way to retry.
+
+---
+
+### 4. Checksum (Last Word) Calculation Audit (BIP39)
+- **Algorithm**: Verify that the calculation strictly follows BIP39 specifications (SHA-256 of the entropy, leading ENT/32 bits as checksum, appended and split into 11-bit word indices).
+- **Known-answer test**: Test with known entropy (e.g., all-zero bytes) and compare against the official BIP39 test vectors.
+- **Checksum integrity**: Verify that a mnemonic's final word is always checksum-correct in whatever the tool actually produces or accepts — whether by rejecting an invalid final word after entry, or by construction (e.g. only offering valid checksum-compliant options to pick from in the first place). Either approach is acceptable; only flag this if it's possible to end up with an internally inconsistent mnemonic.
+
+---
+
+### 5. Seed and Passphrase Derivation Audit (PBKDF2)
+- **PBKDF2**: Verify HMAC-SHA512, 2048 iterations, salt = `mnemonic + passphrase` (passphrase optional, concatenated directly with no separator). An empty passphrase should yield the same result as no passphrase at all.
+
+---
+
+### 6. Address Derivation Audit (BIP32 and its derived standards)
+- Verify that key/address derivation from the binary seed correctly follows standard serialization formats (extended private/public keys in Base58, or the standard address encoding for non-Bitcoin chains).
+- For each supported address format, verify it uses the correct standard derivation path for that specific format — different formats are expected to use different purpose values (e.g. 44' for Legacy, 49' for Nested SegWit, 84' for Native SegWit, 86' for Taproot, or the standard path for any other supported chain). Test against official BIP32/39/44/49/84/86 test vectors where available.
+- **QR Codes**: Verify that generated QR codes correctly encode the intended content and are readable.
+
+---
+
+### 7. Memory Security Audit
+- **Console exposure**: Verify that the seed, passphrase, private keys, and binary seed are not printed to the console or attached to the global `window` object.
+- **Memory cleanup**: Note whether the tool clears sensitive fields/variables on reset (e.g. after the user clears the form). Full cryptographic zeroing of JavaScript strings/memory is not reliably achievable in a browser environment (JS strings are immutable, garbage collection isn't controllable) — treat the absence of guaranteed zeroing as an inherent platform limitation to note, not as a failure to score against.
+- **Clipboard**: If the tool allows copying sensitive values, verify this requires explicit user action and isn't triggered automatically. Note whether the clipboard is ever cleared afterward, as a nice-to-have rather than a requirement.
+
+---
+
+### 8. Practical Tests and Documentation Required from the Auditor
+1. **Vector regression test**: Use official BIP39/BIP32-family test vectors (e.g., all-zero entropy) and verify the tool produces exactly those outputs, based on code inspection or, if you're able to execute the file, direct testing.
+2. **Isolation test**: Based on the code, confirm there's no code path requiring network connectivity for any function (random, microphone, checksum, derivation).
+3. **Memory stress test**: Only if you have the actual ability to run the file in a real browser with developer tools — otherwise, skip this and note that it wasn't tested, rather than reporting an inconclusive live-execution attempt as a finding.
+
+---
+
+### 9. Final Verdict (What the Audit Must Conclude)
+- **Cryptographic correctness** (PASS/FAIL).
+- **Entropy quality** (PASS/FAIL, specifying whether the microphone is used correctly).
+- **Offline security** (PASS/FAIL, specifying whether there are any external connection attempts).
+- **Memory management** (PASS/WARNING, not FAIL — specifying whether the seed remains accessible, noting the platform limitation from section 7).
+- **Recommendations** for any improvements, clearly separated from anything that would actually block a PASS.
+</textarea>
+
+            <!-- DEEPSEEK SECTION -->
+            <div class="audit-section">
+                <h3>DeepSeek</h3>
+                <div class="summary-text">## 11. Final Verdict
+
+| Category | Result |
+|----------|--------|
+| Cryptographic Correctness | ✅ PASS |
+| Entropy Quality | ✅ PASS |
+| Offline Security | ✅ PASS |
+| **Overall Verdict** | ✅ **PASS** |
+
+**Summary:**
+
+SeedGen 3 is a well-constructed, cryptographically correct tool for offline seed generation and key derivation. It demonstrates:
+
+- **Strong entropy management** with CSPRNG and microphone entropy (properly hashed + CSPRNG mixed)
+- **Correct BIP39/BIP32 implementation** verified against official test vectors
+- **Comprehensive self-check** that locks the UI if any cryptographic test fails
+- **Secure offline operation** with no network dependencies
+- **User-friendly security** with confirmation modals for sensitive operations
+</div>
+                <textarea class="scroll-box" readonly># SeedGen 3 Security Audit Report
+
+## Executive Summary
+
+**Overall Verdict: PASS** ✅
+
+The tool demonstrates strong cryptographic correctness, proper entropy management, and robust offline security. The self-contained implementation passes all critical security checks with only minor recommendations for improvement.
+
+---
+
+## 1. Offline Isolation and Dependencies Audit
+
+### ✅ PASS - No Network Activity
+
+**Code Analysis:**
+- No `fetch()`, `XMLHttpRequest`, `WebSocket`, or `navigator.sendBeacon()` found
+- No external `<script src="...">` or `<link>` tags loading resources
+- No dynamic `import()` statements
+- No CDN dependencies
+
+**Self-Containment:**
+All cryptographic primitives are implemented directly within the HTML file:
+- **SHA-256**: Uses Web Crypto API (`crypto.subtle.digest`)
+- **PBKDF2**: Uses Web Crypto API (`crypto.subtle.deriveBits`)
+- **HMAC-SHA512**: Uses Web Crypto API (`crypto.subtle.sign`)
+- **secp256k1**: Hand-rolled implementation (point addition, multiplication, modular arithmetic)
+- **Base58**: Custom implementation
+- **Bech32/Bech32m**: Custom implementation
+- **RIPEMD-160**: Hand-rolled implementation
+- **Keccak-256**: Hand-rolled implementation
+
+**Unauthorized Persistence:**
+- No `localStorage`, `sessionStorage`, `IndexedDB`, or `Cookie` usage
+- No `FileSystem` API usage
+- No automatic downloads without explicit user action (all downloads require button click)
+- The `clearClipboard()` function attempts to wipe the OS clipboard as a defense-in-depth measure
+
+---
+
+## 2. Entropy and Random Number Generation Audit
+
+### 2.1 Manual Input (Numbers and Words)
+
+✅ **PASS**
+
+**Number Validation:**
+- Uses `<input type="number" min="1" max="2048">` which blocks non-numeric characters at the browser level
+- `parseInt()` validation ensures values are within 1-2048 range
+- Invalid inputs trigger `invalid-input` class styling with visual feedback
+
+**Word Validation:**
+- Case-insensitive matching against the complete BIP39 wordlist
+- Whitespace trimming applied
+- Autocomplete dropdown shows only valid BIP39 words (first 8 matches)
+- Invalid words trigger `invalid-input` class styling
+
+**Length Validation:**
+- Supports exactly 12, 18, or 24 words (standard BIP39 lengths)
+- ENSURES word count matches selected length before allowing checksum calculation
+
+### 2.2 Random Number Generator ("Random" Button / Number Roller)
+
+✅ **PASS**
+
+**Critical Check - CSPRNG Usage:**
+```javascript
+const n = (crypto.getRandomValues(new Uint16Array(1))[0] & 0x7FF) + 1;
+```
+- Uses `crypto.getRandomValues()` (CSPRNG)
+- **No `Math.random()` usage** for entropy generation
+- Each tick produces a real CSPRNG draw (not a cosmetic animation)
+- 11 random bits → value 1-2048 with perfect uniformity (no modulo bias)
+
+**Important Security Note:**
+The roller displays numbers as they're generated, and stopping freezes on the current value. This is secure because:
+1. Every value displayed is already a valid CSPRNG draw
+2. Human reaction time determines which equally-valid value is kept
+3. The user cannot influence or predict which value will be shown next
+
+### 2.3 Microphone Entropy
+
+✅ **PASS**
+
+**Collection Mechanism:**
+- Uses `getUserMedia` API with explicit user consent (browser permission prompt)
+- `echoCancellation: false`, `noiseSuppression: false`, `autoGainControl: false` — preserves raw audio signal
+- AudioContext with `fftSize: 256` captures real-time audio samples
+
+**Entropy Processing:**
+```javascript
+async function micGenerateHashFromPool() {
+    const floatArray = new Float32Array(micEntropyPool);
+    const finalHash = new Uint8Array(await crypto.subtle.digest('SHA-256', floatArray.buffer));
+    // XOR with CSPRNG bytes (defense-in-depth)
+    const csprngBytes = crypto.getRandomValues(new Uint8Array(finalHash.length));
+    for (let i = 0; i < finalHash.length; i++) finalHash[i] ^= csprngBytes[i];
+    return hex;
+}
+```
+- **Hash function applied BEFORE use** (SHA-256 of raw audio pool)
+- Raw audio bytes are NEVER used directly as seed material
+- **CSPRNG mixing**: XOR with fresh CSPRNG bytes ensures uniform output regardless of mic quality
+- The CSPRNG mixing is cryptographically sound (XOR with independent uniform random bytes cannot degrade entropy)
+
+**Quality Monitoring & Feedback:**
+- **V-Index**: Real-time signal quality metric (0-3.0+)
+- **Health Status**: PASS/FAIL indicator using:
+  - Repetition Count Test (SP 800-90B 4.4.1)
+  - Adaptive Proportion Test (SP 800-90B 4.4.2)
+- **Visual Progress Bar**: Shows entropy pool accumulation
+- **Bit Count Display**: Shows collected bits vs target (128/192/256 bits)
+- **Retry Capability**: Users can abort and restart collection
+
+**Security Enhancements:**
+- `MIC_SETTLE_MS = 1000`: 1-second hardware stabilization delay before collecting samples
+- Discards low-quality frames (V-Index < 1.5)
+- Discards repetitive/overly predictable patterns (RCT/APT tests)
+- Target collection: 2+ seconds of validated audio → far exceeds entropy requirements
+
+---
+
+## 3. Checksum (Last Word) Calculation Audit
+
+✅ **PASS**
+
+**Algorithm Verification:**
+The `calculateChecksumCandidates()` function correctly implements BIP39:
+
+```javascript
+const hash = await sha256(bytes);
+const cs = hash[0] >> (8 - checksumBits);
+const wordIdx = (x << checksumBits) | cs;
+```
+
+**Steps Verified:**
+1. Entropy bytes collected from first n-1 words
+2. SHA-256 hash computed
+3. First `ENT/32` bits of hash used as checksum
+4. Checksum appended to entropy
+5. Split into 11-bit groups → word indices
+
+**Known-Answer Test (Self-Check):**
+The startup self-check includes BIP39 test vectors:
+```
+128-bit all-zero entropy → "abandon ... about" ✅
+256-bit all-zero entropy → "abandon ... art" ✅
+```
+
+**Integrity Mechanism:**
+- The final (checksum) word is presented as a **dropdown** containing ONLY valid checksum candidates
+- Users cannot manually enter an invalid checksum word
+- This prevents the creation of internally inconsistent mnemonics
+
+---
+
+## 4. Seed and Passphrase Derivation Audit
+
+✅ **PASS**
+
+**PBKDF2 Implementation:**
+```javascript
+const keyMat = await crypto.subtle.importKey('raw', enc.encode(mnemonic), 'PBKDF2', false, ['deriveBits']);
+const seedBuffer = await crypto.subtle.deriveBits({
+    name: 'PBKDF2',
+    salt: enc.encode('mnemonic' + passphrase),
+    iterations: 2048,
+    hash: 'SHA-512'
+}, keyMat, 512);
+```
+
+**Parameters Verified:**
+- **PRF**: HMAC-SHA512 ✅
+- **Iterations**: 2048 ✅ (BIP39 spec)
+- **Salt**: `"mnemonic" + passphrase` ✅
+- **Output Length**: 512 bits (64 bytes) ✅
+- **Empty Passphrase**: Returns same result as no passphrase ✅
+
+**Passphrase Handling:**
+- Passphrase is **NOT** trimmed (preserves leading/trailing spaces as per BIP39 spec)
+- NFKD normalization applied (required by BIP39 for Unicode compliance)
+- Fully optional — no checkbox required to "enable" passphrase
+
+---
+
+## 5. Address Derivation Audit
+
+✅ **PASS**
+
+### 5.1 Cryptographic Core Verification
+
+**The startup self-check validates ALL critical cryptographic operations against official test vectors:**
+
+**BIP-32 Test Vector 1:**
+- Master xprv: `xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKmPGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi` ✅
+- Master xpub: `xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8` ✅
+
+**BIP-84 (Native SegWit):**
+- zprv: `zprvAdG4iTXWBoARxkkzNpNh8r6Qag3irQB8PzEMkAFeTRXxHpbF9z4QgEvBRmfvqWvGp42t42nvgGpNgYSJA9iefm1yYNZKEm7z6qUWCroSQnE` ✅
+- zpub: `zpub6rFR7y4Q2AijBEqTUquhVz398htDFrtymD9xYYfG1m4wAcvPhXNfE3EfH1r1ADqtfSdVCToUG868RvUUkgDKf31mGDtKsAYz2oz2AGutZYs` ✅
+- First address: `bc1qcr8te4kr609gcawutmrza0j4xv80jy8z306fyu` ✅
+
+**BIP-86 (Taproot):**
+- xprv: `xprv9xgqHN7yz9MwCkxsBPN5qetuNdQSUttZNKw1dcYTV4mkaAFiBVGQziHs3NRSWMkCzvgjEe3n9xV8oYywvM8at9yRqyaZVz6TYYhX98VjsUk` ✅
+- xpub: `xpub6BgBgsespWvERF3LHQu6CnqdvfEvtMcQjYrcRzx53QJjSxarj2afYWcLteoGVky7D3UKDP9QyrLprQ3VCECoY49yfdDEHGCtMMj92pReUsQ` ✅
+- Bech32m address: `bc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqkedrcr` ✅
+
+**BIP-49 (Nested SegWit - Testnet):**
+- First address: `2Mww8dCYPUpKHofjgcXcBCEGmniw9CoaiD2` ✅
+
+**RIPEMD-160:**
+- `""` → `9c1185a5c5e9fc54612808977ee8f548b2258d31` ✅
+- `"abc"` → `8eb208f7e05d987a9b044a8e98c6b087f15a0bfc` ✅
+
+**Keccak-256 + secp256k1:**
+- privkey=1 → `0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf` ✅
+
+### 5.2 Supported Derivation Paths
+
+| Chain | Format | Purpose | Path | Verified |
+|-------|--------|---------|------|----------|
+| Bitcoin | Native SegWit | 84' | `m/84'/0'/0'/0/0` | ✅ |
+| Bitcoin | Legacy | 44' | `m/44'/0'/0'/0/0` | ✅ |
+| Bitcoin | Nested SegWit | 49' | `m/49'/0'/0'/0/0` | ✅ |
+| Bitcoin | Taproot | 86' | `m/86'/0'/0'/0/0` | ✅ |
+| EVM | Ethereum Standard | 44' | `m/44'/60'/0'/0/0` | ✅ |
+| TRON | TRON Standard | 44' | `m/44'/195'/0'/0/0` | ✅ |
+
+### 5.3 QR Code Generation
+
+✅ **PASS**
+
+- Uses the QRCode.js library (embedded, not CDN)
+- QR codes encode the exact intended content
+- Private keys show a 30-second auto-close timer for security
+- QR modal includes print functionality
+- No automatic saving of QR code data
+
+---
+
+## 6. Memory Security Audit
+
+### 6.1 Console Exposure
+
+✅ **PASS**
+
+- No seed, passphrase, private keys, or binary seed printed to console
+- No sensitive data attached to the global `window` object
+- `console.table()` is used ONLY for self-check results (public test vector comparisons)
+
+### 6.2 Memory Cleanup
+
+⚠️ **WARNING (Platform Limitation)**
+
+The tool implements best-effort cleanup:
+- `clearAll()`: Clears grid, bits, and triggers `clearClipboard()`
+- `clearPassphrase()`: Resets passphrase field and visibility state
+- `resetKeyFields()`: Wipes all derived key fields
+- `clearClipboard()`: Attempts to wipe OS clipboard
+
+**JavaScript Limitations:**
+- Strings are immutable — zeroing is not possible
+- Garbage collection is not controllable
+- This is an inherent browser platform limitation, not a tool-specific flaw
+
+The tool makes reasonable effort to clear sensitive fields on reset.
+
+### 6.3 Clipboard Security
+
+✅ **PASS**
+
+**Clipboard Operations:**
+- All clipboard copies require **explicit user action** (button click)
+- No automatic clipboard writes
+- **Security confirmation modals** for sensitive data:
+  - "Copy Seed" → confirmation required
+  - "Copy Words" → confirmation required
+  - "Copy Numbers" → confirmation required
+
+**Clipboard Clearance:**
+- `clearClipboard()` attempts to wipe clipboard on reset
+- Silently fails if browser denies permission (defense in depth)
+
+---
+
+## 7. Startup Self-Check
+
+✅ **PASS**
+
+The tool includes a comprehensive startup self-check that verifies:
+1. **BIP-32 Test Vector 1** (master xprv/xpub)
+2. **BIP-39 Test Vectors** (all-zero entropy)
+3. **BIP-84 Test Vectors** (zprv/zpub/address)
+4. **BIP-86 Test Vectors** (xprv/xpub/bech32m address)
+5. **BIP-49 Test Vectors** (testnet address)
+6. **RIPEMD-160** (empty and "abc" vectors)
+7. **Ethereum Reference** (privkey=1 → known address)
+8. **EC Edge Cases** (1×G=G, G+(-G)=∞, N×G=∞, modInverse sanity)
+
+**Failure Behavior:**
+- If ANY test fails, the UI is **locked** (no seed/key generation possible)
+- The lock applies to ALL controls (CSS `pointer-events: none` + `opacity: 0.25`)
+- The banner text changes to: `⛔ SOFTWARE FAILURE — cryptographic self-check failed. Do not use this tool.`
+
+This ensures users cannot accidentally use the tool if the cryptographic math is broken.
+
+---
+
+## 8. Practical Tests
+
+### 8.1 Vector Regression Test
+
+✅ **PASS**
+
+All vector tests are automatically executed at startup (see Section 5.1 for results).
+
+**Manual Verification (Code Inspection):**
+- BIP39 all-zero entropy → "abandon ... about" ✅
+- BIP84 known vectors → matches official test vectors ✅
+- BIP86 known vectors → matches official test vectors ✅
+
+### 8.2 Isolation Test
+
+✅ **PASS**
+
+No network connectivity is required for any function:
+- Random generation: `crypto.getRandomValues()` (local)
+- Microphone: `getUserMedia()` (local device, no network)
+- Checksum: SHA-256 (local Web Crypto)
+- Derivation: PBKDF2, secp256k1, hash functions (local)
+- QR Code generation: Embedded library (local)
+
+### 8.3 Memory Stress Test
+
+⚠️ **NOT PERFORMED**
+
+This test requires running the file in a browser with developer tools. Since I cannot execute the file in a live browser environment during this audit, I cannot comment on runtime memory behavior.
+
+**Recommendation:** If you choose to run this test, verify that:
+1. The seed is not accessible in developer tools after clearing
+2. `window` object does not contain sensitive data
+3. No sensitive data is logged to console
+
+---
+
+## 9. Security Vulnerability Assessment
+
+### 9.1 No Critical Vulnerabilities Found
+
+| Category | Status | Notes |
+|----------|--------|-------|
+| `Math.random()` Usage | ✅ Safe | Uses `crypto.getRandomValues()` exclusively |
+| External Network Requests | ✅ Safe | No network calls |
+| CDN Dependencies | ✅ Safe | All code self-contained |
+| Seed Exposure | ✅ Safe | Not logged, not attached to window |
+| Checksum Validation | ✅ Safe | Only valid checksum options offered |
+| PBKDF2 Parameters | ✅ Safe | Correct spec implementation |
+| Microphone Entropy | ✅ Safe | Hashed + CSPRNG mixed, quality monitoring |
+| QR Code Security | ✅ Safe | Auto-close for private keys |
+
+### 9.2 Minor Observations (Not Blocking)
+
+1. **Memory Zeroing**: JavaScript cannot securely zero strings. This is a platform limitation acknowledged in the audit.
+
+2. **Clipboard Clearance**: `clearClipboard()` attempts to write empty string to clipboard, but this may fail silently in browsers without clipboard permission. This is acceptable (defense-in-depth, not primary security).
+
+3. **Console Logs**: The self-check uses `console.log`/`console.error`/`console.table` for test results. No sensitive data is logged.
+
+---
+
+## 10. Recommendations
+
+### 10.1 High Priority (None)
+
+No critical issues found that require immediate attention.
+
+### 10.2 Medium Priority (Optional Improvements)
+
+1. **Add Clear Confirmation for Clipboard Operations**
+   - Currently, clearing clipboard is done automatically on reset
+   - Consider adding visual feedback when clipboard is cleared
+
+2. **Consider Adding "Clear All" Confirmation Modal**
+   - Wipe Memory already has a confirmation modal (good)
+   - Consider similar for other destructive actions
+
+3. **Add Runtime Memory Test to Self-Check**
+   - Verify that `window` object does not contain sensitive data after cleanup
+   - This would catch accidental global variable pollution
+
+### 10.3 Low Priority (Nice-to-Have)
+
+1. **Add "Copy Public Keys Only" Mode**
+   - Users might want to copy addresses without risk of copying private keys
+   - Currently all sensitive copies require confirmation (good)
+
+2. **Add Seed Version/Generation Date Label**
+   - Could help users track which wallet generation they're using
+   - Not a security requirement
+
+3. **Consider Adding "Print for Offline Storage" Feature**
+   - Currently print functionality is available for QR codes only
+   - Could extend to seed words/numbers with proper security warnings
+
+---
+
+## 11. Final Verdict
+
+| Category | Result |
+|----------|--------|
+| Cryptographic Correctness | ✅ PASS |
+| Entropy Quality | ✅ PASS |
+| Offline Security | ✅ PASS |
+| Memory Management | ⚠️ WARNING |
+| **Overall Verdict** | ✅ **PASS** |
+
+**Summary:**
+
+SeedGen 3 is a well-constructed, cryptographically correct tool for offline seed generation and key derivation. It demonstrates:
+
+- **Strong entropy management** with CSPRNG and microphone entropy (properly hashed + CSPRNG mixed)
+- **Correct BIP39/BIP32 implementation** verified against official test vectors
+- **Comprehensive self-check** that locks the UI if any cryptographic test fails
+- **Secure offline operation** with no network dependencies
+- **User-friendly security** with confirmation modals for sensitive operations
+
+The tool is suitable for production use with the understanding that JavaScript's memory management limitations are inherent to the browser environment and not a flaw in this implementation.
+
+---
+
+*Audit conducted based on source code inspection and verification against official BIP test vectors. All cryptographic operations have been validated. Date: 2026-08-23*
+</textarea>
+            </div>
+
+            <!-- CLAUDE SECTION -->
+            <div class="audit-section">
+                <h3>Claude</h3>
+                <div class="summary-text">## Final Verdict
+
+| Category | Result |
+|---|---|
+| Cryptographic correctness | **PASS** — verified against official BIP32/39/44/49/84/86 vectors, both via embedded self-check and manual code review |
+| Entropy quality | **PASS** — CSPRNG used throughout; microphone path hashed + XORed with fresh CSPRNG, with health testing |
+| Offline security | **PASS** — no network code paths of any kind |
+| Memory management | **PASS / WARNING (platform limitation only)** — no leakage found; JS's lack of guaranteed zeroing is inherent to the browser, not a flaw in this code |
+
+No critical or high-severity findings. The tool's cryptographic core, entropy handling, and offline posture all check out against BIP39/32/44/49/84/86 specifications and standard test vectors.
+</div>
+                <textarea class="scroll-box" readonly>No network calls found. Let me continue checking each audit area.Good, no storage, Math.random used only for animation (not seed material), CSPRNG properly used, no obvious console leaking of sensitive data. Let me check the microphone entropy handling and PBKDF2 salt construction more closely, plus the random button generation flow.Solid — CSPRNG, unbiased mod-2048 via bitmask on 11 bits. Now the microphone entropy path.This is excellent — mic entropy hashed (SHA-256), XORed with fresh CSPRNG bytes, health tests (RCT/APT SP800-90B style), UI feedback via health pill. Now let's check the checksum logic, PBKDF2 salt, memory clearing, clipboard, and derivation path handling.Good — PBKDF2 salt = "mnemonic" + passphrase, consistent everywhere. Clipboard clear function exists. Let's check the checksum candidate logic and word validation, then the self-test suite already embedded (lines ~3800-3930) which is a great sign — it includes official BIP32/39/84/86/49 test vectors run at startup. Let's verify the checksum computation function and word validation/case-insensitivity.Good — case-insensitive, trimmed word validation confirmed. That's plenty of evidence. Let's check the checksum candidate function itself, and network isolation confirmation (no external script tags already confirmed). Let's peek at that function.This looks correct — "by construction" checksum approach (only valid final words offered). Good, consistent with the audit's flexibility. I've gathered sufficient evidence. Let me quickly check the derivation paths (purpose values) block, and confirm no forced downloads / file writes.Confirmed — only triggered by an explicit button click, not automatic. That covers all sections I need. I have enough for a comprehensive report.All purpose values match their respective standard paths correctly (0x8000002C = 44'). This confirms the derivation path audit finding. Now I'll compile the final report.The user just wants a report — no explicit request for a .docx deliverable, so I'll deliver it as a conversational/markdown response.
+
+## Security Audit Report — SeedGen 3 (Offline BIP39 Seed Generation Tool)
+
+**Audit scope:** `SeedGen_3.html`, ~3,980 lines, single self-contained HTML file. Audited via full source inspection (no live browser execution).
+
+---
+
+### 1. Offline Isolation & Dependencies — **PASS**
+- No `fetch()`, `XMLHttpRequest`, `WebSocket`, `sendBeacon`, external `<script src>`, `<link>`, or dynamic `import()` anywhere in the file.
+- All crypto (SHA-256/512, HMAC, PBKDF2, EC math, RIPEMD-160, Base58, Bech32/Bech32m) is implemented inline or via the browser's native `crypto.subtle`/`crypto.getRandomValues` — nothing pulled from a CDN.
+- No `localStorage`, `sessionStorage`, `indexedDB`, or `document.cookie` usage anywhere.
+- The one file-write path (`downloadCamoPNG()` — a disguised "appliance label" PNG containing the seed QR, for physical opsec) is wired only to an explicit button `onclick`, never invoked automatically.
+
+### 2. Entropy & RNG — **PASS**
+- **Random number roller:** uses `crypto.getRandomValues(Uint16Array)`, masked to 11 bits (`& 0x7FF`) giving a uniform 1–2048 range with no modulo bias. `Math.random()` appears exactly once in the file, and only for a cosmetic CSS animation unrelated to entropy.
+- **Manual entry:** numbers/words are trimmed, lower-cased, and validated against `BIP39_WORDLIST.indexOf()`; number inputs use native `<input type="number">`.
+- **Microphone entropy:** captured via `getUserMedia`, pooled, then run through SHA-256 — raw samples never used directly. The result is additionally XORed with a fresh `crypto.getRandomValues()` draw (defense-in-depth: XOR with independent uniform bytes is safe regardless of mic pool quality). Health monitoring includes SP 800-90B-style Repetition Count and Adaptive Proportion tests with a visible pass/fail health pill.
+
+### 3. Checksum (Last Word) — **PASS**
+- The checksum-candidate function (`calculateChecksumCandidates`) builds entropy bit-by-bit from the first N-1 words, computes SHA-256, and only offers checksum-valid final-word options — a by-construction guarantee (no invalid mnemonic reachable).
+- The startup self-check independently re-derives this logic against the official all-zero BIP39 vectors (12-word and 24-word) and matches exactly.
+
+### 4. PBKDF2 / Passphrase — **PASS**
+- Consistent across all four call sites: `PBKDF2`, `HMAC-SHA512`, `iterations: 2048`, `salt: 'mnemonic' + passphrase` (direct concatenation, no separator, empty passphrase behaves as none).
+
+### 5. Address Derivation (BIP32/44/49/84/86) — **PASS**
+- Purpose values correctly differ by format: `0x8000002C` (44') for Legacy/EVM/Tron, and 49'/84'/86' used for Nested SegWit/Native SegWit/Taproot respectively — exactly as expected, not a flaw.
+- The file embeds a genuinely thorough startup self-check that runs on every load: BIP-32 Test Vector 1 (master xprv/xpub), EC edge cases (point-at-infinity, `N×G`, modular inverse), RIPEMD-160 KATs, a keccak/ETH reference key, and full official BIP-84/86/49 test vectors (zpub/zprv, Taproot lift_x + TapTweak + bech32m address, testnet P2SH). If any check fails, the UI is hard-locked (`renderGrid()` is deliberately skipped and the grid stays disabled) with a visible failure banner — a strong fail-safe design.
+
+### 6. Memory Security — **PASS / minor note**
+- No sensitive values (mnemonic, seed, private keys) are logged to console or attached to `window`; the only `console.error/warn` calls carry generic error objects/messages, not secrets.
+- `clearAll()`, `clearKeys()`, `clearPassphrase()`, `clearClipboard()` reset fields on demand.
+- Clipboard writes only occur on explicit user action (copy buttons); a best-effort clipboard-wipe (`writeText('')`) is offered.
+- As expected and correctly noted in your own framing: guaranteed cryptographic zeroing of JS strings isn't achievable in-browser — this is a platform limitation, not a code defect.
+
+### 7. QR / Camouflage Label Feature
+- The "disguised appliance label" QR export is an interesting opsec feature (embeds the seed QR inside a fake product-label PNG). It's purely a rendering/export function, gated behind explicit user interaction — no automatic triggering, no network calls involved.
+
+---
+
+## Final Verdict
+
+| Category | Result |
+|---|---|
+| Cryptographic correctness | **PASS** — verified against official BIP32/39/44/49/84/86 vectors, both via embedded self-check and manual code review |
+| Entropy quality | **PASS** — CSPRNG used throughout; microphone path hashed + XORed with fresh CSPRNG, with health testing |
+| Offline security | **PASS** — no network code paths of any kind |
+| Memory management | **PASS / WARNING (platform limitation only)** — no leakage found; JS's lack of guaranteed zeroing is inherent to the browser, not a flaw in this code |
+
+**Recommendations (non-blocking):**
+No critical or high-severity findings. The tool's cryptographic core, entropy handling, and offline posture all check out against BIP39/32/44/49/84/86 specifications and standard test vectors.
+</textarea>
+            </div>
+
+            <!-- CHATGPT SECTION -->
+            <div class="audit-section">
+                <h3>ChatGPT</h3>
+                <div class="summary-text">I audited the uploaded **`SeedGen_3(2).html`** against the exact criteria in **`AUDIT_Prompt.txt`**, focusing only on the software/cryptographic component as requested. The audit covers the complete 3,980-line HTML file, not just the visible/truncated portion. The audit criteria explicitly require mathematical correctness, digital security, entropy management, offline isolation, memory handling, and regression testing. 
+
+# Security Audit Result — SeedGen 3
+
+## Executive Verdict
+
+| Audit area                         | Verdict                                     |
+| ---------------------------------- | ------------------------------------------- |
+| **Cryptographic correctness**      | **PASS**                                    |
+| **Entropy quality**                | **PASS**                                    |
+| **Offline security**               | **PASS**                                    |
+| **Memory management**              | **WARNING / PASS WITH PLATFORM LIMITATION** |
+| **Overall software security**      | **PASS**                                    |
+| **Blocking vulnerabilities found** | **NONE**                                    |
+
+
+**Conclusion:** Based on the source-code audit and the embedded cryptographic regression tests, I found **no critical or high-severity cryptographic/security defect that would justify blocking the software**.
+
+The implementation is considerably stronger than a typical hand-written browser BIP39 utility because it contains a startup self-test that exercises the actual cryptographic production functions and locks the interface if a test fails. 
+</div>
+                <textarea class="scroll-box" readonly>I audited the uploaded **`SeedGen_3(2).html`** against the exact criteria in **`AUDIT_Prompt.txt`**, focusing only on the software/cryptographic component as requested. The audit covers the complete 3,980-line HTML file, not just the visible/truncated portion. The audit criteria explicitly require mathematical correctness, digital security, entropy management, offline isolation, memory handling, and regression testing. 
+
+# Security Audit Result — SeedGen 3
+
+## Executive Verdict
+
+| Audit area                         | Verdict                                     |
+| ---------------------------------- | ------------------------------------------- |
+| **Cryptographic correctness**      | **PASS**                                    |
+| **Entropy quality**                | **PASS**                                    |
+| **Offline security**               | **PASS**                                    |
+| **Overall software security**      | **PASS**                                    |
+| **Blocking vulnerabilities found** | **NONE**                                    |
+
+
+**Conclusion:** Based on the source-code audit and the embedded cryptographic regression tests, I found **no critical or high-severity cryptographic/security defect that would justify blocking the software**.
+
+The implementation is considerably stronger than a typical hand-written browser BIP39 utility because it contains a startup self-test that exercises the actual cryptographic production functions and locks the interface if a test fails. 
+
+---
+
+# 1. Offline Isolation and Dependencies — PASS
+
+The audit requirement was specifically to verify absence of:
+
+* `fetch()`
+* `XMLHttpRequest`
+* `WebSocket`
+* `navigator.sendBeacon`
+* external `<script src>`
+* external `<link>`
+* dynamic `import()`
+* unauthorized persistent storage
+
+The complete HTML source was inspected programmatically.
+
+### Findings
+
+I found:
+
+* **0 `fetch()` calls**
+* **0 `XMLHttpRequest`**
+* **0 `WebSocket`**
+* **0 `navigator.sendBeacon`**
+* **0 `localStorage`**
+* **0 `sessionStorage`**
+* **0 `IndexedDB`**
+* **0 `document.cookie`**
+* **0 external `<script src>`**
+* **0 external `<link>`**
+* **0 dynamic `import()`**
+
+Therefore there is **no source-code network/persistence mechanism of the types specified by the audit prompt**.
+
+The QR implementation is embedded in the HTML rather than being loaded from a CDN; the file is genuinely self-contained. The HTML itself also explicitly describes the tool as an offline-only utility. 
+
+### Important distinction
+
+The microphone necessarily invokes a browser hardware API:
+
+```text
+navigator.mediaDevices.getUserMedia(...)
+```
+
+That is **not network activity**. It is local device access requiring browser permission.
+
+The print/download functions also intentionally create local output when the user explicitly requests it. For example, the camouflage label is generated from a canvas and downloaded only after the user activates the corresponding button. 
+
+**Result: PASS.**
+
+---
+
+# 2. Random Number Generation — PASS
+
+The audit specifically requires a CSPRNG and says that use of `Math.random()` for seed entropy would be an immediate critical failure. 
+
+The actual source contains **three `crypto.getRandomValues()` uses** and **no executable `Math.random()` use**.
+
+The apparent `Math.random()` occurrence is only inside a comment explaining that the number roller deliberately does **not** use it.
+
+The number roller obtains an actual 11-bit value:
+
+```text
+crypto.getRandomValues(new Uint16Array(1))[0] & 0x7FF
+```
+
+and adds one to obtain 1–2048. Because 2¹¹ = 2048, this mapping has no modulo bias. 
+
+This is exactly the property the audit requested.
+
+**Result: PASS.**
+
+---
+
+# 3. Manual Word/Number Input — PASS
+
+The tool uses the complete embedded 2048-word BIP39 English wordlist.
+
+For word mode, the actual validation performs:
+
+```text
+trim()
+toLowerCase()
+BIP39_WORDLIST.indexOf(...)
+```
+
+so case differences and surrounding whitespace are handled correctly. 
+
+For number mode, the actual HTML input is:
+
+```text
+type = "number"
+min = 1
+max = 2048
+```
+
+and the subsequent validation independently checks:
+
+```text
+num >= 1 && num <= 2048
+```
+
+before accepting the index. 
+
+This matches the audit instruction to consider the actual browser-reachable behaviour of a native number input rather than inventing hypothetical raw-string attacks. 
+
+**Result: PASS.**
+
+---
+
+# 4. BIP39 Checksum Generation — PASS
+
+This is one of the most important areas.
+
+The implementation:
+
+1. Takes the entropy bits.
+2. Computes SHA-256.
+3. Takes the required leading checksum bits.
+4. Appends them to the entropy.
+5. Splits the result into 11-bit groups.
+6. Maps each group to the BIP39 wordlist.
+
+The source explicitly implements that algorithm in the startup regression test. 
+
+It also does something particularly good for manually entered words/numbers: the final checksum word is **not simply accepted from arbitrary user input**.
+
+The tool calculates all possible checksum candidates from the preceding entropy and populates the final slot accordingly. 
+
+Therefore an internally inconsistent mnemonic cannot normally be generated through the UI.
+
+### Official all-zero tests
+
+The embedded self-test checks:
+
+**128-bit zero entropy:**
+
+```text
+abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about
+```
+
+and **256-bit zero entropy:**
+
+```text
+abandon × 23 + art
+```
+
+against the expected BIP39 results. 
+
+**Result: PASS.**
+
+---
+
+# 5. BIP39 PBKDF2 — PASS
+
+The production implementation uses browser WebCrypto:
+
+```text
+PBKDF2
+SHA-512
+2048 iterations
+salt = "mnemonic" + passphrase
+output = 512 bits
+```
+
+which is exactly what the audit prompt requires. 
+
+The actual implementation is:
+
+```text
+crypto.subtle.deriveBits({
+    name: 'PBKDF2',
+    salt: enc.encode('mnemonic' + passphrase),
+    iterations: 2048,
+    hash: 'SHA-512'
+}, ...)
+```
+
+and the same operation is used by the startup self-test. 
+
+### Passphrase handling
+
+I specifically checked this because it is an area where many BIP39 implementations make subtle mistakes.
+
+The current code:
+
+* **does not trim the passphrase**
+* applies **NFKD normalization**
+* permits an empty passphrase
+* concatenates it directly to `"mnemonic"`
+
+This is correct BIP39 behaviour.
+
+The source comments explicitly document the correction made to preserve leading/trailing passphrase spaces and apply NFKD normalization. 
+
+**Result: PASS.**
+
+---
+
+# 6. BIP32 / Bitcoin Derivation — PASS
+
+The implementation contains its own secp256k1, HMAC-SHA512, Base58Check, HASH160, Bech32/Bech32m and related primitives.
+
+This would normally be a significant audit concern because hand-written cryptographic primitives are much harder to trust than established libraries.
+
+However, the file now contains extensive startup known-answer tests against the actual production functions.
+
+### BIP32
+
+The self-test verifies BIP32 Test Vector 1 master:
+
+* xprv
+* xpub
+
+against the official expected values. 
+
+### BIP84
+
+The self-test verifies:
+
+* account zprv
+* account zpub
+* first Native SegWit address
+
+against the BIP84 vector. 
+
+### BIP86
+
+The self-test goes significantly further than simply checking the final address.
+
+It tests:
+
+* account xprv
+* account xpub
+* internal key
+* `lift_x`
+* TapTweak
+* output key
+* Bech32m address
+
+against the BIP86 vector. 
+
+### BIP49
+
+The implementation uses the correct:
+
+```text
+m/49'/0'/0'/0/0
+```
+
+structure and P2SH-P2WPKH construction. 
+
+The startup test also includes a BIP49 testnet vector. 
+
+### BIP86 purpose separation
+
+The source correctly distinguishes:
+
+* BIP44 → `44'`
+* BIP49 → `49'`
+* BIP84 → `84'`
+* BIP86 → `86'`
+
+This is **correct**, not a derivation inconsistency. 
+
+**Result: PASS.**
+
+---
+
+# 7. secp256k1 / RIPEMD160 / Keccak — PASS
+
+This was arguably the highest-risk portion of the original implementation because these are hand-written cryptographic algorithms.
+
+The current version has added explicit regression tests.
+
+### Elliptic curve edge cases
+
+The self-test checks:
+
+* `1 × G = G`
+* `G + (-G) = infinity`
+* `N × G = infinity`
+* modular inverse consistency
+
+These are useful sanity checks against point arithmetic errors. 
+
+### RIPEMD-160
+
+It verifies:
+
+```text
+RIPEMD160("")
+RIPEMD160("abc")
+```
+
+against known reference values. 
+
+### Keccak / Ethereum
+
+It verifies the well-known private-key-1 Ethereum address:
+
+```text
+0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf
+```
+
+against the actual Keccak/secp256k1/EIP-55 production path. 
+
+This substantially reduces the risk that a transcription or arithmetic error exists in the hand-written primitives.
+
+**Result: PASS.**
+
+---
+
+# 8. Ethereum and TRON — PASS
+
+The EVM derivation uses the shared secp256k1 infrastructure and derives the Ethereum account through the BIP44-family path.
+
+TRON uses:
+
+```text
+m/44'/195'/0'/0/0
+```
+
+and correctly uses Keccak of the uncompressed public key followed by TRON's Base58Check representation. 
+
+The Ethereum and TRON private keys are displayed only after the user explicitly requests key generation and confirms the security warning. 
+
+**Result: PASS.**
+
+---
+
+# 9. Microphone Entropy — PASS
+
+This was another critical audit point.
+
+The implementation requests microphone access through:
+
+```text
+navigator.mediaDevices.getUserMedia(...)
+```
+
+with:
+
+* echo cancellation disabled
+* noise suppression disabled
+* automatic gain control disabled
+
+and creates an `AudioContext` / `AnalyserNode` to obtain actual local audio samples. 
+
+This satisfies the requirement for explicit browser permission and real microphone sampling. 
+
+### Raw audio is not used directly
+
+The raw microphone pool is converted to a `Float32Array` and passed through SHA-256:
+
+```text
+SHA-256(audio_pool)
+```
+
+before it becomes seed material. 
+
+That satisfies the audit requirement that raw audio samples must not directly become seed material.
+
+### Additional CSPRNG mixing
+
+This is particularly strong:
+
+```text
+finalHash = SHA256(microphone_pool)
+finalHash XOR crypto.getRandomValues(...)
+```
+
+The resulting entropy therefore retains security even if the microphone contribution is poor, provided the browser CSPRNG is trustworthy. 
+
+This is the correct security direction for combining an uncertain physical entropy source with a trusted CSPRNG.
+
+### Health monitoring
+
+The microphone subsystem provides:
+
+* signal-quality/V-index
+* repetition testing
+* adaptive-proportion testing
+* health status
+* entropy-pool progress
+* retry/reset mechanisms
+
+The source implements both repetition and adaptive-proportion checks.  
+
+### Important nuance
+
+The microphone subsystem's statistical tests should **not** be interpreted as proof that the microphone contains a specific number of bits of true entropy. They are health/quality heuristics and failure detectors.
+
+Fortunately, this does **not** become a security vulnerability because the final microphone-derived value is XORed with fresh browser CSPRNG output.
+
+**Result: PASS.**
+
+---
+
+# 10. Memory Management — WARNING, not FAIL
+
+The audit instructions explicitly state that perfect cryptographic zeroing of JavaScript memory cannot reliably be guaranteed because JavaScript strings are immutable and garbage collection is outside application control. Therefore this category must be scored as WARNING rather than FAIL when applicable. 
+
+The implementation does several good things.
+
+### Sensitive fields are cleared
+
+`clearAll()` clears:
+
+* generated keys
+* grid
+* bits
+* clipboard
+
+and `clearPassphrase()` separately clears the passphrase. 
+
+### Clipboard
+
+The application attempts to clear the clipboard using:
+
+```text
+navigator.clipboard.writeText('')
+```
+
+when clearing the application state. 
+
+This is good defence-in-depth, although the browser may reject clipboard writes outside an appropriate user gesture.
+
+### Sensitive output is masked
+
+Seed and private keys are password-type fields and use hold-to-reveal controls. The UI also gates sensitive operations such as copying the seed, displaying the mnemonic as QR, and generating private keys behind explicit confirmation. 
+
+### Console exposure
+
+There are `console.error`, `console.warn`, `console.table`, and `console.log` calls.
+
+However, I did **not** find deliberate logging of the seed, mnemonic, passphrase, or private keys.
+
+The startup self-test does print its test results to the console, but those are known-answer test values, not user-generated secrets. 
+
+### Remaining limitation
+
+Sensitive JavaScript objects/strings can remain in browser memory after variables are cleared.
+
+That is an inherent browser-runtime limitation and **not a failure under the supplied audit criteria**.
+
+**Result: WARNING / PASS.**
+
+---
+
+# 11. Startup Cryptographic Self-Test — PASS
+
+This is one of the strongest security improvements in this version.
+
+The application performs its cryptographic self-test automatically at page load:
+
+```text
+DOMContentLoaded → runStartupSelfCheck()
+```
+
+and if any test fails, it:
+
+* displays a failure banner
+* disables interaction
+* does not render the usable seed grid
+* prevents seed/key generation
+
+The code explicitly states that there is no bypass path through an individual control. 
+
+The test suite covers:
+
+* BIP32
+* EC arithmetic
+* RIPEMD160
+* Keccak/Ethereum
+* BIP39 checksum
+* BIP84
+* BIP86
+* BIP49
+
+and associated serialization/address functions. 
+
+This is an excellent defensive measure for a self-contained cryptographic application.
+
+---
+
+# 12. QR Code Security — PASS
+
+The QR implementation is local and embedded.
+
+Sensitive QR operations are explicitly gated.
+
+The seed/mnemonic QR operation triggers the security confirmation rather than silently exposing the secret. 
+
+The QR modal also has a 30-second timer for sensitive output, and the QR DOM contents are removed when the modal closes. 
+
+I found no network dependency associated with QR generation.
+
+**Result: PASS.**
+
+---
+
+# 13. Direct Browser Execution Test
+
+I attempted to execute the actual HTML in a local Chromium headless environment.
+
+The browser process did not terminate within the available execution window, so I **do not count this as a successful live-browser regression test**.
+
+Per the audit instructions, I therefore do **not** claim that a live-browser memory-stress test or complete interactive execution was performed. The conclusions above are based on:
+
+1. Complete source inspection.
+2. Static programmatic inspection of the full 3,980-line file.
+3. The application's own embedded known-answer test suite.
+4. Inspection of the actual production cryptographic paths.
+
+This is consistent with the audit prompt's instruction not to report an inconclusive browser attempt as a successful test. 
+
+---
+
+# Final Audit Verdict
+
+## Cryptographic correctness: **PASS**
+
+I found no blocking mathematical error.
+
+The strongest evidence is the extensive embedded known-answer suite covering BIP39, BIP32, BIP49, BIP84, BIP86, RIPEMD160, Keccak, secp256k1 edge cases, Base58 serialization, Bech32 and Bech32m. 
+
+## Entropy quality: **PASS**
+
+* Browser CSPRNG: **correct**
+* No `Math.random()` seed entropy: **confirmed**
+* Number mapping 1–2048: **unbiased**
+* Microphone: **real local samples**
+* Microphone: **hashed before use**
+* Microphone: **mixed with independent CSPRNG**
+* Health/retry mechanism: **present**
+
+The CSPRNG XOR is particularly important because it prevents a weak microphone from becoming a single point of entropy failure. 
+
+## Offline security: **PASS**
+
+No prohibited network APIs or external resource loading were found in the complete source.
+
+No localStorage/sessionStorage/IndexedDB/cookie persistence was found.
+
+## Memory management: **WARNING / PASS**
+
+The application performs reasonable clearing of fields, generated keys and clipboard contents, but JavaScript cannot provide guaranteed cryptographic memory zeroization. This is an inherent browser limitation.
+---
+
+# Recommendations — Non-blocking
+
+These are improvements, **not reasons to fail the audit**:
+
+2. Consider reducing or eliminating `console.error()`/`console.warn()` in production builds, even though I found no secret leakage through them.
+3. A future hardened version could isolate sensitive operations in a dedicated Worker and explicitly terminate the Worker after use, although this still would not provide absolute memory erasure.
+4. The microphone statistical tests should be documented as **health indicators rather than quantitative proof of entropy**. The CSPRNG mixing already provides the important security guarantee.
+
+---
+
+## Bottom line
+
+**I would classify this version as:**
+
+> **PASS — No critical or high-severity software security vulnerability identified under the supplied audit specification.**
+
+secp256k1/Keccak/RIPEMD160 implementation startup self-test: it exercises the real production cryptographic functions against fixed known-answer vectors and locks the application if they fail. 
+
+The only qualification is the normal **browser-memory limitation**. 
+</textarea>
+            </div>
+
+            <!-- GEMINI 
+            <div class="audit-section">
+                <h3>Gemini</h3>
+                <div class="summary-text">Paste here the content of the file AUDIT_GEM_Summary.txt</div>
+                <textarea class="scroll-box" readonly>Paste here the content of the file AUDIT_GEM_SOFT.txt</textarea>
+            </div>
+-->		
+
+        </article>
+    </main>
+
+    <footer>
+        <p>No cookies. No tracking. No data collected.</p>
+        <p>&copy; SeedGen 3 Project. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

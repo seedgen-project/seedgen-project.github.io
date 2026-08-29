@@ -832,15 +832,17 @@
      disabled while it's empty. It sits here, between the grid and the
      Seed field, as a gentle nudge rather than a gate: fill it in (or
      don't) and press Generate. -->
-<div class="key-container">
-    <label for="passphraseInput" style="color: #fba94c; white-space: nowrap;"><strong>Passphrase:</strong></label>
-    <input type="password" id="passphraseInput" placeholder="Optional - adds extra security" style="flex: 1; min-width: 100px;">
-    <button type="button" id="btnTogglePassphrase" class="btn-eye" title="Show/hide passphrase" onclick="togglePassphraseVisibility()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; display: block;"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
-    </button>
-    <button type="button" id="btnGenerateSeed" class="btn-action" onclick="handleGenerateClick()" disabled>Generate Seed</button>
+<div class="key-container" style="flex-direction: column; align-items: stretch;">
+    <div style="display: flex; gap: 10px; align-items: center; width: 100%;">
+        <label for="passphraseInput" style="color: #fba94c; white-space: nowrap;"><strong>Passphrase:</strong></label>
+        <input type="password" id="passphraseInput" placeholder="Optional - adds extra security" style="flex: 1; min-width: 100px;">
+        <button type="button" id="btnTogglePassphrase" class="btn-eye" title="Show/hide passphrase" onclick="togglePassphraseVisibility()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; display: block;"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+        <button type="button" id="btnGenerateSeed" class="btn-action" onclick="handleGenerateClick()" disabled>Generate Seed</button>
+    </div>
+    <p style="color: #a0a0b0; font-size: 0.75rem; font-style: italic; font-weight: normal; text-align: center; margin: 8px 0 0; width: 100%;">We suggest to use only US keyboard characters for wallet standards.</p>
 </div>
-<p style="color: #a0a0b0; font-size: 0.75rem; font-style: italic; font-weight: normal; margin: -6px 0 12px;">We suggest to use only US keyboard characters for wallet standards.</p>
 
 <div class="key-container">
     <label style="color: #e1e1e6; white-space: nowrap;"><strong>Seed:</strong></label>

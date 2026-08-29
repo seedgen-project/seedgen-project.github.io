@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeedGen 3 - Seed Generation Helper</title>
     <style>
+        /* Pinned so every rem/em value renders identically regardless of
+           the visitor's own browser text-size default (Firefox and
+           Chromium-based browsers don't share that setting, and most
+           users never touch it either way) - same reasoning as the
+           Input Mode row's min-height fix. */
+        html {
+            font-size: 16px;
+        }
+        /* Form controls don't inherit the page font by default - browsers
+           give button/input/select/textarea their own UI-control font, and
+           that default differs between Firefox and Chromium (this is what
+           made buttons look smaller on Firefox even after pinning html
+           above, which only affects elements that DO inherit). Any class
+           below that sets its own font-size (e.g. .btn-mic-inline) still
+           wins - element selector, lowest specificity, easily overridden. */
+        button, input, select, textarea, optgroup {
+            font-family: inherit;
+            font-size: inherit;
+        }
         body {
             font-family: Arial, sans-serif;
             max-width: 1100px;

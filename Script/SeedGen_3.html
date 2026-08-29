@@ -32,6 +32,15 @@
             align-items: center;
             gap: 10px 20px;
         }
+        /* Reserves the height the Input Mode row reaches once its trailing
+           slot (Physical Entropy button / Number Roller box) is shown -
+           measured live at 32px vs 18px with the slot empty, +6px safety
+           margin for rendering differences across browsers - so toggling
+           that slot on mode change never grows the row and shifts
+           everything below it (Length row, notice, grid) down a few px. */
+        .config-section .config-row:first-child {
+            min-height: 38px;
+        }
         .config-row label {
             display: flex;
             align-items: center;
@@ -336,22 +345,11 @@
         .multi-key-bar {
             margin-bottom: 15px;
         }
-        .multi-key-bar > button {
-            display: inline-block;
-            width: auto;
-            min-width: 220px;
-            padding: 12px 24px;
-            font-size: 0.95rem;
-        }
         .multi-key-panel {
             margin-top: 10px;
         }
         .multi-key-panel.hidden {
             display: none;
-        }
-        .btn-generate-keys {
-            min-width: 0 !important;
-            padding: 10px 20px !important;
         }
         .chain-group {
             background: #202024;
@@ -862,7 +860,6 @@
 </div>
 
 <div class="multi-key-bar">
-    <button id="btnGenerateKeys" class="btn-secondary btn-generate-keys" onclick="handleGenerateKeysButtonClick()" disabled>Generate Keys / Addresses</button>
     <div id="keysAddressesPanel" class="multi-key-panel hidden">
 
         <div class="chain-group">
@@ -966,6 +963,59 @@
             </div>
         </div>
 
+    </div>
+
+    <!-- Only revealed after real addresses exist (see executeGenerateKeys()) -
+         nothing shown before that, per design: ask only at the moment the
+         tool has actually delivered its value. -->
+    <div id="supportSeedGenBox" class="hidden" style="text-align: center; margin-top: 15px;">
+        <button id="btnSupportSeedGen" class="btn-action" onclick="openDonationModal()">Test Your New Wallet: Consider a Donation</button>
+    </div>
+</div>
+
+<!-- Donation modal - fully static/offline (same embedded QR library as the
+     rest of the page, no network calls), same addresses as the site's
+     Testwallet.html donation page. Deliberately a full-screen modal (not a
+     panel next to the user's own addresses): opening it is a separate,
+     voluntary click, and while open it's the only thing on screen, clearly
+     labeled "Donate" - no ambiguity with the user's own generated wallet. -->
+<div id="donationModal" class="modal-overlay hidden" onclick="handleDonationOverlayClick(event)">
+    <div class="modal-box-qr" onclick="event.stopPropagation()">
+        <button class="modal-close-btn" onclick="handleDonationClose()">&times;</button>
+        <h3 style="color: #00b37e; margin-top: 0; margin-bottom: 5px;">Support SeedGen 3</h3>
+        <p style="font-size: 0.85rem; color: #a0a0b0; margin-bottom: 16px;">Free, open source, no accounts, no tracking. If it was useful, a donation helps keep it that way.</p>
+
+        <div id="donationCoinList" style="display: flex; flex-direction: column; gap: 10px;">
+            <div class="key-container">
+                <span class="coin-pill coin-pill-pub">₿</span>
+                <span style="flex: 1; text-align: left; font-weight: bold;">Bitcoin <span style="color: #a0a0b0; font-weight: normal; font-size: 0.8rem;">(Native SegWit)</span></span>
+                <button class="btn-action" onclick="showDonationAddress('Bitcoin')">Donate</button>
+            </div>
+            <div class="key-container">
+                <span class="coin-pill coin-pill-pub">⟠</span>
+                <span style="flex: 1; text-align: left; font-weight: bold;">Ethereum <span style="color: #a0a0b0; font-weight: normal; font-size: 0.8rem;">(ERC20 &amp; BEP20)</span></span>
+                <button class="btn-action" onclick="showDonationAddress('Ethereum')">Donate</button>
+            </div>
+            <div class="key-container">
+                <span class="coin-pill coin-pill-pub">₮</span>
+                <span style="flex: 1; text-align: left; font-weight: bold;">USDT <span style="color: #a0a0b0; font-weight: normal; font-size: 0.8rem;">(ERC20 &amp; BEP20)</span></span>
+                <button class="btn-action" onclick="showDonationAddress('USDT')">Donate</button>
+            </div>
+            <div class="key-container">
+                <span class="coin-pill coin-pill-pub">¢</span>
+                <span style="flex: 1; text-align: left; font-weight: bold;">USDC <span style="color: #a0a0b0; font-weight: normal; font-size: 0.8rem;">(ERC20 &amp; BEP20)</span></span>
+                <button class="btn-action" onclick="showDonationAddress('USDC')">Donate</button>
+            </div>
+        </div>
+
+        <div id="donationDetail" class="hidden">
+            <h4 id="donationCoinTitle" style="color: #ffffff; font-weight: normal; margin-bottom: 8px;"></h4>
+            <div class="qr-code-wrapper">
+                <div id="donationQrTarget"></div>
+            </div>
+            <div class="qr-text-display" id="donationAddressText"></div>
+            <button class="btn-secondary" id="btnCopyDonationAddr" onclick="copyDonationAddress()">Copy Address</button>
+        </div>
     </div>
 </div>
 
@@ -1321,8 +1371,6 @@ function updateActionButtonsState() {
     if (!isSeedGenerated) revealSeed(false);
     btnCamo.disabled = !isSeedGenerated;
 
-    document.getElementById('btnGenerateKeys').disabled = !isSeedGenerated;
-
     // Unified Generate button (grid+passphrase -> Seed). In BIT mode it's
     // ready as soon as there's something in the bits field - the exact
     // length is checked on click, same alert-on-mismatch UX the old
@@ -1372,6 +1420,7 @@ function resetKeyFields() {
         document.getElementById(id).value = '';
     });
     document.getElementById('keysAddressesPanel').classList.add('hidden');
+    document.getElementById('supportSeedGenBox').classList.add('hidden');
 }
 
 function clearKeys() {
@@ -1790,10 +1839,16 @@ async function proceedGenerate() {
     if (getGridIndices() === null) return; // safety guard, shouldn't happen if the button was enabled
     setGridEnabled(false);
     await updateSeedOutput();
-    // Camouflage/Copy/QR/Generate-keys buttons gate on the Seed actually
-    // being present (see updateActionButtonsState) - refresh them now that
-    // it just was.
+    // Camouflage/Copy/QR buttons gate on the Seed actually being present
+    // (see updateActionButtonsState) - refresh them now that it just was.
     updateActionButtonsState();
+    // Generate Seed now also derives PRV/PUB/addresses directly - the old
+    // separate "Generate Keys/Addresses" button (and its own private-keys
+    // confirmation modal) is retired: pressing Generate Seed is already the
+    // one deliberate action, a second confirmation right after was redundant.
+    if (document.getElementById('seedOutput').value) {
+        await executeGenerateKeys();
+    }
 }
 
 // ============================================================
@@ -3300,13 +3355,7 @@ async function deriveTron() {
 // Generic confirm-then-act modal, shared by "Generate PRV Keys", "Copy Seed",
 // "QR Code" (seed), and "Copy Words"/"Copy Num" - all surface secrets that
 // are as good as the seed itself, all deserve a warning first.
-let pendingSecureAction = null; // 'prvKeys' | 'copySeed' | 'qrSeed' | 'copyWords' | 'copyNumbers' | 'wipeMemory'
-
-function requestKeysModal() {
-    pendingSecureAction = 'genKeys';
-    document.getElementById('zprvModalText').innerHTML = 'Are you sure? This reveals <strong>PRIVATE</strong> keys for every format/chain below!';
-    document.getElementById('zprvModal').classList.remove('hidden');
-}
+let pendingSecureAction = null; // 'copySeed' | 'qrSeed' | 'copyWords' | 'copyNumbers' | 'wipeMemory'
 
 function requestSeedCopyModal() {
     pendingSecureAction = 'copySeed';
@@ -3364,8 +3413,6 @@ function confirmSecureAction() {
     pendingSecureAction = null;
     if (action === 'copySeed') {
         executeCopySeed();
-    } else if (action === 'genKeys') {
-        executeGenerateKeys();
     } else if (action === 'qrSeed') {
         executeOpenQrModal('seed');
     } else if (action === 'qrNum') {
@@ -3390,19 +3437,6 @@ async function deriveBtcNativeSegwit() {
     const addrKey = await deriveFirstAddressKey(acc.accountKey);
     const pubHash = await hash160(getCompressedPubKey(addrKey.priv));
     return { accountKey: acc.accountKey, fingerprint: acc.fingerprint, address: toBech32('bc', 0, pubHash) };
-}
-
-function handleGenerateKeysButtonClick() {
-    const panel = document.getElementById('keysAddressesPanel');
-    if (!panel.classList.contains('hidden')) {
-        panel.classList.add('hidden');
-        return;
-    }
-    if (document.getElementById('btcNativePrvOutput').value) {
-        panel.classList.remove('hidden');
-        return;
-    }
-    requestKeysModal();
 }
 
 // PRV field = the extended private key (zprv/yprv/xprv) for the 4 BTC
@@ -3445,11 +3479,85 @@ async function executeGenerateKeys() {
         document.getElementById('tronPubOutput').value = tron.address;
 
         document.getElementById('keysAddressesPanel').classList.remove('hidden');
+        document.getElementById('supportSeedGenBox').classList.remove('hidden');
         updateActionButtonsState();
     } catch (err) {
         console.error(err);
         alert("Error generating keys/addresses.");
     }
+}
+
+// ============================================================
+// DONATION MODAL - fully static, same addresses as the site's
+// Testwallet.html donation page (keep the two in sync by hand, they're
+// separate files with no shared source). No network calls: same embedded
+// QR library already used throughout this page.
+// ============================================================
+const donationData = {
+    'Bitcoin': { network: 'Native SegWit', address: 'bc1qfu2w47jpwl23sqqv0fu86pz5s4hwy2n8hdcleg' },
+    'Ethereum': { network: 'ERC20 & BEP20', address: '0x724883C106680d53cca5a8E428311c7FE45a926d' },
+    'USDT': { network: 'ERC20 & BEP20', address: '0x724883C106680d53cca5a8E428311c7FE45a926d' },
+    'USDC': { network: 'ERC20 & BEP20', address: '0x724883C106680d53cca5a8E428311c7FE45a926d' }
+};
+let currentDonationAddress = '';
+
+function openDonationModal() {
+    document.getElementById('donationCoinList').classList.remove('hidden');
+    document.getElementById('donationDetail').classList.add('hidden');
+    document.getElementById('donationModal').classList.remove('hidden');
+}
+
+function closeDonationModal() {
+    document.getElementById('donationModal').classList.add('hidden');
+}
+
+// X button / clicking outside: if a coin's QR is showing, step back to the
+// coin list first (doesn't lose the whole modal just for backing out of one
+// coin) - only closes everything once already back at the list.
+function handleDonationClose() {
+    const detail = document.getElementById('donationDetail');
+    if (!detail.classList.contains('hidden')) {
+        detail.classList.add('hidden');
+        document.getElementById('donationCoinList').classList.remove('hidden');
+        return;
+    }
+    closeDonationModal();
+}
+
+function handleDonationOverlayClick(event) {
+    if (event.target.id === 'donationModal') handleDonationClose();
+}
+
+function showDonationAddress(coin) {
+    const entry = donationData[coin];
+    if (!entry) return;
+    currentDonationAddress = entry.address;
+
+    document.getElementById('donationCoinList').classList.add('hidden');
+    document.getElementById('donationDetail').classList.remove('hidden');
+    document.getElementById('donationCoinTitle').textContent = coin + (entry.network ? ' (' + entry.network + ')' : '');
+    document.getElementById('donationAddressText').textContent = entry.address;
+
+    const target = document.getElementById('donationQrTarget');
+    target.innerHTML = '';
+    new QRCode(target, {
+        text: entry.address,
+        width: 180,
+        height: 180,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+    });
+}
+
+function copyDonationAddress() {
+    if (!currentDonationAddress) return;
+    const btn = document.getElementById('btnCopyDonationAddr');
+    const original = btn.textContent;
+    navigator.clipboard.writeText(currentDonationAddress).then(() => {
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => { btn.textContent = original; }, 1500);
+    }).catch(() => {});
 }
 
 // ============================================================

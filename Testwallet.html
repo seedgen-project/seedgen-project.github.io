@@ -91,12 +91,36 @@
             color: #c9d1d9;
             font-size: 1.05rem;
         }
+        .donate-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 2.5rem;
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+        .donate-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .donate-coins {
+            flex: 0 0 370px;
+            max-width: 370px;
+        }
+        @media (max-width: 720px) {
+            .donate-layout {
+                flex-direction: column;
+            }
+            .donate-coins {
+                flex: 1 1 auto;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
         .donation-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 0.8rem;
-            margin: 1.5rem auto;
-            max-width: 500px;
+            margin: 0;
             text-align: left;
         }
         .donation-item {
@@ -322,70 +346,83 @@
         <article class="content-box">
             <h1>Support SeedGen 3</h1>
 
-            <p>
-                SeedGen 3 is free, open source. No accounts, no tracking, no subscriptions — one offline file that does a lot: seed generation, key derivation, passphrase protection, and more. Donations help keep it that way.
-            </p>
-            <p>
-                Free to use, free to audit, free to modify. If it saved you time or gave you peace of mind, a donation is appreciated.
-            </p>
-            <p>
-                Self-custody shouldn't come with a subscription. SeedGen 3 stays free and independent thanks to people who choose to give something back.
-            </p>
-
-            <h2 style="margin-top: 2rem;">Donate</h2>
-
-            <div class="donation-grid">
-                <!-- Bitcoin -->
-                <div class="donation-item">
-                    <div class="donation-coin">
-                        <span class="symbol">₿</span>
-                        <span class="name">Bitcoin</span>
-                    </div>
-                    <button class="donation-button" onclick="openModal('Bitcoin', '')">
-                        Donate
-                    </button>
+            <div class="donate-layout">
+                <div class="donate-text">
+                    <p>
+                        SeedGen 3 is free, open source. No accounts, no tracking, no subscriptions.
+                    </p>
+                    <p>
+                        One offline file that does a lot: seed generation, key derivation, passphrase protection, and more.
+                    </p>
+                    <p>
+                        Donations help keep it that way.
+                    </p>
+                    <p>
+                        Free to use, free to audit, free to modify. If it saved you time or gave you peace of mind, a donation is appreciated.
+                    </p>
+                    <p>
+                        SeedGen 3 stays free and independent thanks to people who choose to give something back.
+                    </p>
                 </div>
 
-                <!-- Ethereum -->
-                <div class="donation-item">
-                    <div class="donation-coin">
-                        <span class="symbol">⟠</span>
-                        <div>
-                            <span class="name">Ethereum</span>
-                            <span class="network">ERC-20 &amp; BEP-20</span>
+                <div class="donate-coins">
+                    <div class="donation-grid">
+                        <!-- Bitcoin -->
+                        <div class="donation-item">
+                            <div class="donation-coin">
+                                <span class="symbol">₿</span>
+                                <div>
+                                    <span class="name">Bitcoin</span>
+                                    <span class="network">Native SegWit</span>
+                                </div>
+                            </div>
+                            <button class="donation-button" onclick="openModal('Bitcoin', 'Native SegWit')">
+                                Donate
+                            </button>
                         </div>
-                    </div>
-                    <button class="donation-button" onclick="openModal('Ethereum', 'ERC-20 &amp; BEP-20')">
-                        Donate
-                    </button>
-                </div>
 
-                <!-- USDT -->
-                <div class="donation-item">
-                    <div class="donation-coin">
-                        <span class="symbol">₮</span>
-                        <div>
-                            <span class="name">USDT</span>
-                            <span class="network">ERC-20 &amp; BEP-20</span>
+                        <!-- Ethereum -->
+                        <div class="donation-item">
+                            <div class="donation-coin">
+                                <span class="symbol">⟠</span>
+                                <div>
+                                    <span class="name">Ethereum</span>
+                                    <span class="network">ERC20 &amp; BEP20</span>
+                                </div>
+                            </div>
+                            <button class="donation-button" onclick="openModal('Ethereum', 'ERC20 &amp; BEP20')">
+                                Donate
+                            </button>
                         </div>
-                    </div>
-                    <button class="donation-button" onclick="openModal('USDT', 'ERC-20 &amp; BEP-20')">
-                        Donate
-                    </button>
-                </div>
 
-                <!-- USDC -->
-                <div class="donation-item">
-                    <div class="donation-coin">
-                        <span class="symbol">¢</span>
-                        <div>
-                            <span class="name">USDC</span>
-                            <span class="network">ERC-20 &amp; BEP-20</span>
+                        <!-- USDT -->
+                        <div class="donation-item">
+                            <div class="donation-coin">
+                                <span class="symbol">₮</span>
+                                <div>
+                                    <span class="name">USDT</span>
+                                    <span class="network">ERC20 &amp; BEP20</span>
+                                </div>
+                            </div>
+                            <button class="donation-button" onclick="openModal('USDT', 'ERC20 &amp; BEP20')">
+                                Donate
+                            </button>
+                        </div>
+
+                        <!-- USDC -->
+                        <div class="donation-item">
+                            <div class="donation-coin">
+                                <span class="symbol">¢</span>
+                                <div>
+                                    <span class="name">USDC</span>
+                                    <span class="network">ERC20 &amp; BEP20</span>
+                                </div>
+                            </div>
+                            <button class="donation-button" onclick="openModal('USDC', 'ERC20 &amp; BEP20')">
+                                Donate
+                            </button>
                         </div>
                     </div>
-                    <button class="donation-button" onclick="openModal('USDC', 'ERC-20 &amp; BEP-20')">
-                        Donate
-                    </button>
                 </div>
             </div>
 
@@ -440,7 +477,7 @@ var QRCode;!function(){function a(a){this.mode=c.MODE_8BIT_BYTE,this.data=a,this
 
         // ============================================================
         // Donation addresses — fill in as they become available.
-        // One EVM address covers ETH/USDT/USDC on both ERC-20 and BEP-20.
+        // One EVM address covers ETH/USDT/USDC on both ERC20 and BEP20.
         // ============================================================
         const donationData = {
             'Bitcoin': { address: 'bc1qfu2w47jpwl23sqqv0fu86pz5s4hwy2n8hdcleg' },

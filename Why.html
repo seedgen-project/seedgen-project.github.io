@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Why? - SeedGen 3</title>
+    <meta name="description" content="Why generate your own keys: hardware wallets like Ledger, Trezor or Coldcard delegate key generation to closed firmware. SeedGen 3 keeps it offline, transparent and yours.">
+    <link rel="canonical" href="https://seedgen3.com/Why.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SeedGen 3">
+    <meta property="og:title" content="Why? - SeedGen 3">
+    <meta property="og:description" content="Why generate your own keys: hardware wallets like Ledger, Trezor or Coldcard delegate key generation to closed firmware. SeedGen 3 keeps it offline, transparent and yours.">
+    <meta property="og:url" content="https://seedgen3.com/Why.html">
+    <meta property="og:image" content="https://seedgen3.com/Imgstorage/SeedGenLogo03a.png">
+    <meta name="twitter:card" content="summary">
     <style>
         * {
             box-sizing: border-box;
@@ -127,6 +136,35 @@
             display: block;
             height: 1.2rem; /* same as line-height for a visual blank line */
         }
+        .compare-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        .compare {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.98rem;
+            min-width: 560px;
+        }
+        .compare th,
+        .compare td {
+            border: 1px solid #30363d;
+            padding: 0.7rem 0.9rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        .compare thead th {
+            background-color: #0d1117;
+            color: #2ea043;
+        }
+        .compare tbody td:first-child {
+            font-weight: 600;
+            color: #8b949e;
+            white-space: nowrap;
+        }
+        .compare tbody tr:nth-child(even) td {
+            background-color: #0d1117;
+        }
     </style>
 </head>
 <body>
@@ -170,6 +208,28 @@
             <div class="center-image">
                 <img src="./Imgstorage/Dart.png" alt="Hardware Target" />
             </div>
+
+            <h2>SeedGen 3 vs. a hardware wallet</h2>
+
+            <p>Hardware wallets &mdash; Ledger, Trezor, Coldcard and the rest &mdash; solve the <em>storage</em> problem: they keep an already-generated key off your online computer. SeedGen 3 solves the problem <strong>one step earlier</strong>: where the key comes from in the first place.</p>
+
+            <div class="compare-wrap">
+                <table class="compare">
+                    <thead>
+                        <tr><th></th><th>Typical hardware wallet</th><th>SeedGen 3</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Key generation</td><td>Inside closed firmware, on a chip you cannot inspect</td><td>In front of you, from a single readable HTML file</td></tr>
+                        <tr><td>Randomness</td><td>A proprietary hardware RNG you have to trust</td><td>Your own entropy &mdash; dice, bits or live microphone noise &mdash; XOR-ed with the browser CSPRNG</td></tr>
+                        <tr><td>Auditability</td><td>Requires reverse-engineering; most users never can</td><td>Full source, readable by anyone (or an AI) in minutes</td></tr>
+                        <tr><td>Supply chain</td><td>Device passes through manufacturing, warehousing and shipping</td><td>Nothing ships &mdash; you download one file and run it offline</td></tr>
+                        <tr><td>Cost</td><td>&euro;50&ndash;200 for a Ledger, a Trezor or a Coldcard</td><td>Free</td></tr>
+                        <tr><td>Output</td><td>A standard BIP-39 seed</td><td>A standard BIP-39 seed &mdash; restore it into any wallet, hardware ones included</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>This isn't &quot;hardware wallets are bad&quot;. What SeedGen 3 produces is a normal BIP-39 phrase: generate it here, then load it into a Ledger, a Trezor, or an air-gapped signer like <strong>SeedSigner</strong> or <strong>Krux</strong> if that's your setup. SeedGen 3 just makes sure the <strong>one irreversible step</strong> &mdash; creating the key &mdash; happens somewhere you can actually see.</p>
 
             <h2>Bring Your Own Entropy</h2>
 

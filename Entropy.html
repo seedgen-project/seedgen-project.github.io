@@ -120,8 +120,12 @@
         a.inline-link:hover {
             text-decoration: underline;
         }
+        .table-scroll {
+            overflow-x: auto;
+        }
         table.ent-table {
             width: 100%;
+            min-width: 560px;
             border-collapse: collapse;
             margin: 1.5rem 0;
             font-size: 0.95rem;
@@ -213,6 +217,7 @@
 
             <p>For that reason, we also ran the ENT test suite, which produces a far more readable output. The table below is the most transparent thing we can offer without handing out the actual entropy samples.</p>
 
+            <div class="table-scroll">
             <table class="ent-table">
                 <thead>
                     <tr>
@@ -255,6 +260,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
 
         </article>
     </main>
